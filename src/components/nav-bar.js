@@ -21,7 +21,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example({logo}) {
+export default function NavBar({logo}) {
   return (
     <Disclosure as="nav" className="bg-transparent">
       {({ open }) => (
