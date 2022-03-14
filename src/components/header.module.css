@@ -4,6 +4,7 @@
 .root {
   position: relative;
   z-index: 100;
+
 }
 
 .wrapper {
@@ -58,6 +59,9 @@
 
 .nav {
   display: none;
+  font-family: "Arial";
+  font: size 18px;
+  color: rgb(68,68,68);
 
   @nest & ul {
     margin: 0;

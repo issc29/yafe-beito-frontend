@@ -10,6 +10,10 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import ProjectPreviewGrid from "../components/project-preview-grid";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import Gallery from "../components/gallery";
+import FeaturedClasses from "../components/featured-classes";
+import FeaturedNews from "../components/featured-news";
+import siteNameIllustration from '../images/site_name_illustration.png'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -87,14 +91,16 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title="Latest projects"
-            nodes={projectNodes}
-            browseMoreHref="/archive/"
-          />
-        )}
+        <div className="flex-col">
+          <h1 hidden>Welcome to {site.title}</h1>
+          <img src={siteNameIllustration} className="block w-80 place-content-center m-auto" />
+          <h2 className="text-center">Hakham Dr. José Faur Studies </h2>
+        </div>
+        <Gallery />
+        <hr />
+        <FeaturedClasses />
+        <hr />
+        <FeaturedNews />
       </Container>
     </Layout>
   );

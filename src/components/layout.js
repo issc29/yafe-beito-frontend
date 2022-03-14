@@ -4,20 +4,17 @@ import Header from "./header";
 import "../styles/layout.css";
 import * as styles from "./layout.module.css";
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
-  <>
-    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
+import bgImage from "../images/bg_main_page.png"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./footer";
+
+
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, logo }) => (
+  <div className={styles.layoutMain} style={{backgroundImage:`url(${bgImage})`}}>
+    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} logo={logo}/>
     <div className={styles.content}>{children}</div>
-    <footer className={styles.footer}>
-      <div className={styles.footerWrapper}>
-        <div className={styles.siteInfo}>
-          © {new Date().getFullYear()}, Built with <a href="https://www.sanity.io">Sanity</a> &amp;
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </div>
-      </div>
-    </footer>
-  </>
+    <Footer/>
+  </div>
 );
 
 export default Layout;

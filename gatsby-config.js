@@ -13,6 +13,8 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-material-ui',
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-source-sanity',
       options: {

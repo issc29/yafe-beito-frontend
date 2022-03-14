@@ -1,0 +1,27 @@
+.root {
+  position: relative;
+  z-index: 100;
+
+}
+
+.navlinks {
+  margin-left: 10px;
+  display: flex;
+}
+
+.logo {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+
+.dropMenu {
+    border:none !important;
+    margin-top:0px !important;
+    background-color:rgb(165, 165, 165) !important;
+}
+
+.nav-links:hover {
+  background-color:rgba(165, 165, 165); /*will change background-color of element on hover */
+  color: white; /*will change color of text within the element on hover */
+  }
