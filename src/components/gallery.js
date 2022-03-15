@@ -61,7 +61,7 @@ export default function Gallery() {
   const eventsListener = (eventName, eventData) => console.log({eventName, eventData}); 
 
   // The scrollingElement is usually the window, if you are scrolling inside another element, suplly it here
-  const scrollingElement = window;
+  //const scrollingElement = window;
   return (
         <StaticQuery
           query={query}
@@ -72,7 +72,6 @@ export default function Gallery() {
               );
             }
             var items2 = [];
-            console.log(data.site)
             for(var image of data.site.gallery.images) {
                     const src = imageUrlFor(buildImageObj(image)).url()
                     const id = image.asset["_id"]
@@ -81,7 +80,6 @@ export default function Gallery() {
                         mediaUrl: src
                 })
             }
-            console.log(items2)
 
 
             return (
@@ -90,7 +88,6 @@ export default function Gallery() {
                 options={options}
                 container={container}
                 eventsListener={eventsListener}
-                scrollingElement={scrollingElement}
               />
             );
           }}

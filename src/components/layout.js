@@ -10,11 +10,11 @@ import Footer from "./footer";
 
 
 const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, logo }) => (
-  <div className={styles.layoutMain} style={{backgroundImage:`url(${bgImage})`}}>
-    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} logo={logo}/>
-    <div className={styles.content}>{children}</div>
-    <Footer/>
-  </div>
+    <div className={styles.layoutMain} style={{backgroundImage:`url(${bgImage})`}}>
+      <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} logo={logo}/>
+      <div className={styles.content}>{children}</div>
+      <Footer/>
+    </div>
 );
 
 export default Layout;

@@ -9,10 +9,9 @@ import NavBar from "./nav-bar";
 
 
 
-import * as styles from "./header.module.css";
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle, logo }) => (
-  <div className={styles.root}>
+  <div>
    <NavBar logo={logo}/>
   </div>
 );

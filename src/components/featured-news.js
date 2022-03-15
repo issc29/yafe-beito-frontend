@@ -30,7 +30,6 @@ export default function FeaturedNews() {
             'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
           );
         }
-        console.log(data.site.latestNews)
 
         return (
           <div className="text-center">
