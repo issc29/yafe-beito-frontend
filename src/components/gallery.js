@@ -1,9 +1,9 @@
 import { ProGallery } from 'pro-gallery';
-import 'pro-gallery/dist/statics/main.css';
 import React from 'react';
 import { graphql, StaticQuery } from "gatsby";
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
+require('pro-gallery/dist/statics/main.css');
 
 const query = graphql`
 query  {
