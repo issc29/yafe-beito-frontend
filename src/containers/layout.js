@@ -40,6 +40,7 @@ function LayoutContainer(props) {
   function handleHideNav() {
     setShowNav(false);
   }
+  
   return (
     <StaticQuery
       query={query}

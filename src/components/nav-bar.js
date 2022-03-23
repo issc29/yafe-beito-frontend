@@ -1,20 +1,39 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React from "react";
-import { Fragment } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import { Link } from "gatsby";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
-import { Link } from "gatsby";
+import Dropdown from "./dropdown";
+
+const aboutLinks = [
+  {"name":"The Hakham", "link":"/about/hakham"},
+  {"name":"Yafe Be'to", "link":"/about/yafe-beito"},
+  {"name":"Team", "link":"/"}
+]
+
+const classLinks = [
+  {"name":"Tora"},
+  {"name":"Nebi'im"},
+  {"name":"Ketubim"},
+  {"name":"Mishna"},
+  {"name":"Talmud"},
+  {"name":"Geonim"},
+  {"name":"Haramban"},
+  {"name":"Hakhme Sepharad"},
+  {"name":"Contemporary"},
+]
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'About', href: '#', current: false },
-  { name: 'Classes', href: '#', current: false },
-  { name: 'Blog', href: '#', current: false },
-  { name: 'Bookshop', href: '#', current: false },
-  { name: 'Donate', href: '#', current: false },
-  { name: 'Contact', href: '#', current: false },
+  { type: 'link', name: 'Home', current: false, href: '/'},
+  { type: 'dropdown', name: 'About', current: false, options: aboutLinks},
+  { type: 'dropdown', name: 'Classes', current: false, options: classLinks},
+  { type: 'link', name: 'Blog', current: false, href: '/blog'},
+  { type: 'link', name: 'Bookshop', current: false, href: '/book-shop'},
+  { type: 'link', name: 'Donate', current: false, href: '/'},
+  { type: 'link', name: 'Contact', current: false, href: '/'},
 ]
 
 function classNames(...classes) {
@@ -22,6 +41,8 @@ function classNames(...classes) {
 }
 
 export default function NavBar({logo}) {
+  
+
   return (
     <Disclosure as="nav" className="bg-transparent">
       {({ open }) => (
@@ -61,12 +82,18 @@ export default function NavBar({logo}) {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link to="/" className={classNames(
+
+                      (item.type == "dropdown") 
+                      ?
+                      <Dropdown name={item.name} options={item.options} />
+                      : 
+                      <Link to={item.href} className={classNames(
                         item.current ? 'bg-white/50 text-site-grey' : 'text-site-grey hover:bg-white/50 hover:text-site-grey',
                         'px-3 py-2 rounded-md text-sm font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}>{item.name}</Link>
                     ))}
+                  
                   </div>
                 </div>
               </div>

@@ -14,6 +14,7 @@ import Gallery from "../components/gallery";
 import FeaturedClasses from "../components/featured-classes";
 import FeaturedNews from "../components/featured-news";
 import siteNameIllustration from '../images/site_name_illustration.png'
+import bgImage from '../images/bg_main_page.png'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -68,7 +69,7 @@ const IndexPage = props => {
 
   if (errors) {
     return (
-      <Layout>
+      <Layout bgImage={bgImage}>
         <GraphQLErrorList errors={errors} />
       </Layout>
     );
@@ -88,7 +89,7 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout>
+    <Layout bgImage={bgImage}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
