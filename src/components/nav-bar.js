@@ -33,7 +33,7 @@ const navigation = [
   { type: 'link', name: 'Blog', current: false, href: '/blog'},
   { type: 'link', name: 'Bookshop', current: false, href: '/book-shop'},
   { type: 'link', name: 'Donate', current: false, href: '/'},
-  { type: 'link', name: 'Contact', current: false, href: '/'},
+  { type: 'link', name: 'Contact', current: false, href: '/contact'},
 ]
 
 function classNames(...classes) {
