@@ -7,7 +7,7 @@ exports.handler = async event => {
   require('dotenv').config()
   const completeUrl = "https://www.google.com";
 
-  const { AWS_ACCESS_KEY, AWS_SECRET, AWS_REGION_ZONE, VERIFIED_EMAIL } = process.env
+  const { SITE_AWS_ACCESS_KEY, SITE_AWS_SECRET, SITE_AWS_REGION, SITE_VERIFIED_EMAIL, SITE_CAPTCHA_SECRET } = process.env
 
   let requestParams = JSON.parse(event.body)
   let name = requestParams.name
@@ -15,7 +15,7 @@ exports.handler = async event => {
   let subject = requestParams.subject
   let message = requestParams.message
   let captcha = requestParams.captcha
-  let secret = process.env.CAPTCHA_SECRET
+  let secret = SITE_CAPTCHA_SECRET
 
   if(captcha == null) {
     return new Promise(function(resolve, reject) {reject(Error("No Captcha supplied!"))});
@@ -36,15 +36,15 @@ exports.handler = async event => {
   }
   
     AWS.config.update({
-        accessKeyId: AWS_ACCESS_KEY,
-        secretAccessKey: AWS_SECRET,
-        region: AWS_REGION_ZONE
+        accessKeyId: SITE_AWS_ACCESS_KEY,
+        secretAccessKey: SITE_AWS_SECRET,
+        region: SITE_AWS_REGION
     })
 
     const ses = new AWS.SES({ apiVersion: "2010-12-01" })
     const params = {
       Destination: {
-        ToAddresses: [VERIFIED_EMAIL] // Email address/addresses that you want to send your email
+        ToAddresses: [SITE_VERIFIED_EMAIL] // Email address/addresses that you want to send your email
       },
     //   ConfigurationSetName: <<ConfigurationSetName>>,
       Message: {
@@ -74,7 +74,7 @@ exports.handler = async event => {
         }
       },
       ReplyToAddresses: [fromEmail], 
-      Source: VERIFIED_EMAIL
+      Source: SITE_VERIFIED_EMAIL
     }
 
     return ses.sendEmail(params).promise().then(data => {
