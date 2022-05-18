@@ -32,7 +32,7 @@ const navigation = [
   { type: 'dropdown', name: 'Classes', current: false, options: classLinks},
   { type: 'link', name: 'Blog', current: false, href: '/blog'},
   { type: 'link', name: 'Bookshop', current: false, href: '/book-shop'},
-  { type: 'link', name: 'Donate', current: false, href: '/'},
+  { type: 'link', name: 'Donate', current: false, href: '/donate'},
   { type: 'link', name: 'Contact', current: false, href: '/contact'},
 ]
 
@@ -79,7 +79,7 @@ export default function NavBar({logo}) {
                     alt="Workflow"
                   />
                 </div>
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:block sm:ml-6 mt-6 w-28">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
 
@@ -88,7 +88,7 @@ export default function NavBar({logo}) {
                       <Dropdown name={item.name} options={item.options} />
                       : 
                       <Link to={item.href} className={classNames(
-                        item.current ? 'bg-white/50 text-site-grey' : 'text-site-grey hover:bg-white/50 hover:text-site-grey',
+                        item.current ? 'bg-white/50 text-site-grey' : ' bg-dark-blue text-white no-underline text-xl hover:bg-white/50 hover:text-site-grey',
                         'px-3 py-2 rounded-md text-sm font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}>{item.name}</Link>
@@ -101,7 +101,7 @@ export default function NavBar({logo}) {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-2 pt-2 pb-3 space-y-1 ">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
