@@ -16,6 +16,7 @@ query  {
         _type
         _key
       }
+      _rawLatestNews
     }	
   }
 `;
@@ -32,9 +33,10 @@ export default function FeaturedNews() {
         }
 
         return (
-          <div className="text-center">
-            <h1 className="text-center">Latest News</h1>
-            <PortableText value={data.site.latestNews}/>
+          <div className="text-center text-dark-blue">
+           <hr className="border-2 border-dark-blue mx-auto w-1/2 mb-4" />
+            <div className="text-center text-5xl">Latest News</div>
+            <PortableText value={data.site["_rawLatestNews"]}/>
           </div>
         );
       }}

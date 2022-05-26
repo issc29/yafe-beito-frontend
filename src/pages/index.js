@@ -7,7 +7,6 @@ import {
 } from "../lib/helpers";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import ProjectPreviewGrid from "../components/project-preview-grid";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import Gallery from "../components/gallery";
@@ -98,9 +97,7 @@ const IndexPage = props => {
           <h2 className="text-center">Hakham Dr. José Faur Studies </h2>
         </div>
         <Gallery />
-        <hr />
         <FeaturedClasses />
-        <hr />
         <FeaturedNews />
       </Container>
     </Layout>

@@ -8,11 +8,11 @@ export default function Dropdown({name, options}) {
   return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
-        <div className="hover:bg-white/50" >
-          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-black bg-transparent rounded-md hover:bg-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+        <div className="hover:bg-white/50 hover:text-dark-blue bg-dark-blue text-white no-underline text-xl rounded-md" >
+          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 rounded-md">
             {name}
             <ChevronDownIcon
-              className="w-5 h-5 ml-2 -mr-1 text-black-200 hover:text-black-100"
+              className="w-5 h-5 ml-2 -mr-1 my-auto "
               aria-hidden="true"
             />
           </Menu.Button>
@@ -32,8 +32,8 @@ export default function Dropdown({name, options}) {
                 <Menu.Item>
                 {({ active }) => (
                   <Link to={option.link} className={`${
-                    active ? 'bg-violet-500 text-black' : 'text-gray-900'
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}>{option.name}</Link>
+                    active ? 'bg-dark-blue text-white' : 'text-dark-blue'
+                  } group flex rounded-md items-center w-full px-2 py-2 text-lg`}>{option.name}</Link>
                 )}
               </Menu.Item>
               ))

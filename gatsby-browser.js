@@ -5,5 +5,5 @@
  */
 
 // You can delete this file if you're not using it
-
+import 'typeface-forum'
 import './src/styles/global.css'

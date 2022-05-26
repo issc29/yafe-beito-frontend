@@ -7,15 +7,8 @@ import ytIcon from '../images/yt.png'
 import * as styles from "./layout.module.css";
 
 const Footer = () => (
-  <footer className="bg-footer-yellow">
-      <div className={styles.footerWrapper}>
-        <div className="text-3xl text-center">
-          Contact Us
-        </div>
-        <div className="text-base text-center">
-        YafeBeito@gmail.com<br/>
-        USA : +1-929-224-3903
-        </div>
+  <footer className="bg-dark-blue text-white py-4">
+      <div >
         <div className="flex items-center justify-center">
           <a href="https://www.facebook.com/profile.php?id=100075891844001/" target="_blank">
             <img src={fbIcon} className="h-12 w-12" />
@@ -28,7 +21,7 @@ const Footer = () => (
           </a>
         </div>
         <div className={styles.siteInfo}>
-          © {new Date().getFullYear()} by Yafe Beito: Hakham Dr. José Faur Studies Foundation.
+          © {new Date().getFullYear()} by Yafe Beito: Hakham Dr. José Faur Studies Foundation
           <br/>Site built with <a href="https://www.sanity.io">Sanity</a> &amp;
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
