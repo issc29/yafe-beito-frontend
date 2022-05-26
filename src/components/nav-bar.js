@@ -79,19 +79,21 @@ export default function NavBar({logo}) {
                     alt="Workflow"
                   />
                 </div>
-                <div className="hidden sm:block sm:ml-6 mt-6 w-28">
-                  <div className="flex space-x-4">
+                <div className="hidden sm:block sm:ml-6 mt-6 ">
+                  <div className="flex space-x-4 ">
                     {navigation.map((item) => (
 
                       (item.type == "dropdown") 
                       ?
                       <Dropdown name={item.name} options={item.options} />
                       : 
-                      <Link to={item.href} className={classNames(
-                        item.current ? 'bg-white/50 text-site-grey' : ' bg-dark-blue text-white no-underline text-xl hover:bg-white/50 hover:text-site-grey',
-                        'px-3 py-2 rounded-md text-sm font-medium'
-                      )}
-                      aria-current={item.current ? 'page' : undefined}>{item.name}</Link>
+                      <div className="w-28">
+                        <Link to={item.href} className={classNames(
+                          item.current ? 'bg-white/50 text-site-grey' : ' bg-dark-blue text-white no-underline text-xl hover:bg-white/50 hover:text-dark-blue',
+                          'w-28 h-11 px-4 py-2 rounded-md  text-center font-medium w-full inline-block'
+                        )}
+                        aria-current={item.current ? 'page' : undefined}>{item.name}</Link>
+                     </div>
                     ))}
                   
                   </div>
@@ -108,7 +110,7 @@ export default function NavBar({logo}) {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    item.current ? 'bg-gray-900 text-white' : 'bg-dark-blue text-white no-underline text-xl hover:bg-gray-700 hover:text-white',
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}

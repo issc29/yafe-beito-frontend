@@ -97,9 +97,7 @@ const IndexPage = props => {
           <h2 className="text-center">Hakham Dr. José Faur Studies </h2>
         </div>
         <Gallery />
-        <hr />
         <FeaturedClasses />
-        <hr />
         <FeaturedNews />
       </Container>
     </Layout>
