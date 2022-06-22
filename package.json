@@ -3,6 +3,9 @@
   "name": "sanity-gatsby-portfolio-web",
   "version": "1.0.3",
   "author": "Isaac Cohen",
+  "engines": {
+    "node": ">=17.9.0"
+  },
   "scripts": {
     "build": "gatsby build",
     "clean-cache": "gatsby clean",
