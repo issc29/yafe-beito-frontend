@@ -1,21 +1,11 @@
 import { Link } from "gatsby";
 import React from "react";
-import { PortableText } from "@portabletext/react";
 import { graphql, StaticQuery } from "gatsby";
+import BlockContent from "./block-content";
 
 const query = graphql`
 query  {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      latestNews {
-        children {
-          text
-          marks
-          _key
-          _type
-        }
-        _type
-        _key
-      }
       _rawLatestNews
     }	
   }
@@ -36,7 +26,7 @@ export default function FeaturedNews() {
           <div className="text-center text-dark-blue">
            <hr className="border-2 border-dark-blue mx-auto w-1/2 mb-4" />
             <div className="text-center text-5xl">Latest News</div>
-            <PortableText value={data.site["_rawLatestNews"]}/>
+            <BlockContent blocks={data.site["_rawLatestNews"]} />
           </div>
         );
       }}

@@ -7,7 +7,7 @@ import ytIcon from '../images/yt.png'
 import * as styles from "./layout.module.css";
 
 const Footer = () => (
-  <footer className="bg-dark-blue text-white py-4">
+  <footer className="bg-dark-blue text-white py-4 absolute bottom-0 inset-x-0 ">
       <div >
         <div className="flex items-center justify-center">
           <a href="https://www.facebook.com/profile.php?id=100075891844001/" target="_blank">

@@ -29,7 +29,7 @@ const classLinks = [
 const navigation = [
   { type: 'link', name: 'Home', current: false, href: '/'},
   { type: 'dropdown', name: 'About', current: false, options: aboutLinks},
-  { type: 'dropdown', name: 'Classes', current: false, options: classLinks},
+  { type: 'link', name: 'Classes', current: false, href: '/classes'},
   { type: 'link', name: 'Blog', current: false, href: '/blog'},
   { type: 'link', name: 'Bookshop', current: false, href: '/book-shop'},
   { type: 'link', name: 'Donate', current: false, href: '/donate'},

@@ -94,7 +94,7 @@ const IndexPage = props => {
         <div className="flex-col">
           <h1 hidden>Welcome to {site.title}</h1>
           <img src={siteNameIllustration} className="block w-80 place-content-center m-auto" />
-          <h2 className="text-center">Hakham Dr. José Faur Studies </h2>
+          <h2 className="text-center text-3xl text-white">Hakham Dr. José Faur Studies </h2>
         </div>
         <Gallery />
         <FeaturedClasses />
