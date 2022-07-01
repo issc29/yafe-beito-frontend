@@ -11,8 +11,7 @@ const AudioPlayerCustom = (props) => {
   const player = React.useRef()
   const trackId = props.Track.id || ""
 
-  console.log("TRACK ID")
-console.log(trackId)
+  console.log(props)
 
   return (
     <>
@@ -33,6 +32,7 @@ console.log(trackId)
             src={props.Track.link }
             showJumpControls={false} 
             onPlay={e => console.log("onPlay")}
+            volume=".5"
             showFilledVolume={true} 
             showDownloadProgress={false}
             customAdditionalControls={[]} 
@@ -57,7 +57,7 @@ console.log(trackId)
 };
 
 AudioPlayerCustom.defaultProps = {
-  Track: {}
+  Track: {},
 };
 
 

@@ -77,6 +77,19 @@ exports.createResolvers = ({ createResolvers }) => {
 
 */
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type Category {
+      level0: [String!],
+      level1: [String!],
+      level2: [String!],
+      level3: [String!],
+    }
+  `
+  createTypes(typeDefs)
+}
+
 exports.createResolvers = ({createResolvers}) => {
   createResolvers({
     // `SanityBlogPost` being the type name you want to extend
@@ -120,6 +133,59 @@ exports.createResolvers = ({createResolvers}) => {
           });
 
           return uniqueTags
+        }
+      }
+    }
+  })
+
+  createResolvers({
+    // `SanityBlogPost` being the type name you want to extend
+    SanityAudioTracks: {
+      // `happiness` being the field name you want to add
+      tagsByCategory: {
+        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
+        type: 'Category',
+        resolve: async(source, args, context, info) => {
+        
+          
+          // Recursively find all parent tags
+          const mapParentTags = (ref) => {
+            var tags = []
+            const tagNode = context.nodeModel.getNodeById({id: ref })
+            tags.push(tagNode.name)
+            if("parentTag" in tagNode && tagNode.parentTag !== null) {
+              tags.push(...mapParentTags(tagNode.parentTag._ref))
+            }
+            return tags
+          }
+          
+          // For all tags find parent tags
+          const ref = source.tags[0]._ref
+          var tags = []
+          for (const tag of source.tags) {
+            var tagsPerSource = []
+            const parentTags = mapParentTags(tag._ref)
+            for (let i = parentTags.length - 1; i >=0; i--) {
+              if(i == parentTags.length - 1) {
+                tagsPerSource.push(parentTags[i])
+              }
+              else {
+                tagsPerSource.push(`${tagsPerSource[tagsPerSource.length - 1]} > ${parentTags[i]}`)
+              }
+            }
+            tags.push(tagsPerSource)
+          }
+
+          var tagsPerLevel = {"level0": [], "level1": [], "level2": [], "level3": []}
+          for (const tag of tags ) {
+            for(let i = 0; i<tag.length; i++) {
+              tagsPerLevel[`level${i}`].push(tag[i])
+            }
+          }
+          console.log("TAGS")
+          console.log(tagsPerLevel)
+          
+         return tagsPerLevel
         }
       }
     }
