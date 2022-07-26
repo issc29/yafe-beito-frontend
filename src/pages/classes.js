@@ -10,7 +10,7 @@ import AudioPlayerCustom from "./audioPlayerCustom";
 import ClassContainer from "./ClassContainer";
 
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu } from 'react-instantsearch-hooks-web';
+import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement } from 'react-instantsearch-hooks-web';
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
 
@@ -73,6 +73,7 @@ const ClassesPage = props => {
         <div className="flex-col">
           <h1 className="text-center text-dark-blue text-4xl">Classes</h1>
           <InstantSearch searchClient={searchClient} indexName="Tracks">
+
             <SearchBox classNames={{
               root:'w-full relative whitespace-nowrap ', 
               input: 'w-full py-2 px-4 shadow rounded', 
