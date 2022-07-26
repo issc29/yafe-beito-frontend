@@ -21,6 +21,17 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd && token
       }
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia-queries"),
+        settings: {
+          attributesForFaceting: ['categories.level0', 'categories.level1', 'categories.level2', 'categories.level3']
+        }
+      },
     }
   ]
 }

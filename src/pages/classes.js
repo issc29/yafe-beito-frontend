@@ -7,6 +7,13 @@ import bgImage from '../images/about_bg.jpg'
 import { PlayIcon } from "@heroicons/react/outline";
 import 'react-h5-audio-player/lib/styles.css';
 import AudioPlayerCustom from "./audioPlayerCustom";
+import ClassContainer from "./ClassContainer";
+
+import algoliasearch from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement } from 'react-instantsearch-hooks-web';
+
+const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
+
 
 export const query = graphql`
 {
@@ -25,6 +32,12 @@ export const query = graphql`
           id
           name
         }
+        tagsByCategory {
+          level0
+          level1
+          level2
+          level3
+        }
       }
     }
   }
@@ -34,7 +47,7 @@ export const query = graphql`
 
 const ClassesPage = props => {
   const { data, errors } = props;
-  const [audioSrc, setAudioSrc] = useState({id: "av"})
+  const [audioSrc, setAudioSrc] = useState({id: ""})
 
   if (errors) {
     return (
@@ -58,27 +71,53 @@ const ClassesPage = props => {
     <Layout bgImage={bgImage} hideFooter={true}>
       <Container>
         <div className="flex-col">
-          {allTracks.edges.map((track) => (
-            <div className="bg-dark-blue text-white my-4 flex py-2">
-              <div className="flex-none w-20">
-                <PlayIcon className="h-20 w-20 text-white hover:text-gray-400" onClick={() => {setAudioSrc(track.node); }} >
-                  </PlayIcon>
-              </div>
-              <div className="flex-1 flex flex-col">
-                <div className="text-2xl">{track.node.title}</div>
-                <div>{track.node.artist}</div>
-                <div>{track.node.dateGiven}</div>
-                <div>{track.node.allTags.map((tag) => (
-                  <button className="bg-gray-500 hover:bg-gray-400 px-2.5 rounded-lg mx-2">#{tag.name}</button>
-                ))}</div>
-                
-              </div>
-             </div>
-        
-            ))}
-            <AudioPlayerCustom Track={audioSrc}/>
-        </div>
+          <h1 className="text-center text-dark-blue text-4xl">Classes</h1>
+          <InstantSearch searchClient={searchClient} indexName="Tracks">
 
+            <SearchBox classNames={{
+              root:'w-full relative whitespace-nowrap ', 
+              input: 'w-full py-2 px-4 shadow rounded', 
+              submitIcon:'fill-dark-blue w-3.5 h-3.5', 
+              submit:'absolute m-3.5 right-0',
+              resetIcon: 'fill-rose-500 w-3.5 h-3.5',
+              reset: 'right-8 absolute m-3.5'}} 
+              placeholder="Search Classes"
+              />
+            <CurrentRefinements 
+                classNames={{
+                  root: 'flex min-h-[36px]',
+                  item:'bg-dark-blue rounded-md pr-1.5 m-1.5 text-white flex px-1.5',
+                  label: 'pr-1.5',
+                  delete: 'pl-1.5'
+                }}
+                transformItems={(items) => {
+
+                  return items.map((item) => {item.label="Category"; return item})
+                  }}
+              />
+            <div className="flex">
+              <HierarchicalMenu
+                attributes={[
+                  'categories.level0',
+                  'categories.level1',
+                  'categories.level2',
+                  'categories.level3',
+                ]} 
+                classNames={{
+                  root: 'flex-none min-w-[150px] pr-3 my-4',
+                  count: 'bg-[#dfe2ee] rounded-lg py-0.5 px-1.5 ml-2',
+                  list: 'ml-4 text-gray-700',
+                  selectedItem: 'text-dark-blue'
+                }}
+              />
+              <Hits 
+                hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} />} 
+                classNames={{root:'flex-auto'}} 
+              />
+            </div>
+          </InstantSearch>
+          <AudioPlayerCustom Track={audioSrc}/>
+        </div>
       </Container>
     </Layout>
   );
