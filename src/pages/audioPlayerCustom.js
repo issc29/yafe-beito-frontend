@@ -22,8 +22,8 @@ const AudioPlayerCustom = (props) => {
       />
       <div
         className="fixed left-0 bottom-0 min-w-full z-10 bg-dark-blue" >
-        <div className="relative h-full w-full flex min-w-[">
-          <div key={props.Track.id} className="flex flex-col md:p-4 p-1 text-white min-w-[150px] whitespace-nowrap overflow-hidden">
+        <div className="relative h-full w-full sm:flex text-center sm:text-left">
+          <div key={props.Track.id} className="flex flex-col md:p-4 p-1 text-white w-full sm:min-w-[150px] whitespace-nowrap overflow-hidden">
             <div>{props.Track.title}</div>
             <div className="text-xs">{props.Track.artist}</div>
           </div>

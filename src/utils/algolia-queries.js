@@ -51,7 +51,13 @@ const queries = [
     query: tracksQuery,
     transformer: ({ data }) => data.tracks.edges.map(trackToAlgoliaRecord),
     indexName,
-    settings: {  },
+    settings: { 
+      attributesForFaceting: [
+        'categories.level0',
+        'categories.level1',
+        'categories.level2',
+        'categories.level3',
+    ] },
   },
 ]
 module.exports = queries

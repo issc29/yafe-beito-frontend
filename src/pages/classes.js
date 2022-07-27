@@ -8,6 +8,8 @@ import { PlayIcon } from "@heroicons/react/outline";
 import 'react-h5-audio-player/lib/styles.css';
 import AudioPlayerCustom from "./audioPlayerCustom";
 import ClassContainer from "./ClassContainer";
+import Modal from 'react-modal';
+
 
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement } from 'react-instantsearch-hooks-web';
@@ -65,6 +67,17 @@ const ClassesPage = props => {
     );
   }
 
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const player = React.useRef(null);
 
   return (
@@ -73,6 +86,45 @@ const ClassesPage = props => {
         <div className="flex-col">
           <h1 className="text-center text-dark-blue text-4xl">Classes</h1>
           <InstantSearch searchClient={searchClient} indexName="Tracks">
+            <button className="sm:hidden bg-dark-blue text-lg text-white hover:bg-white hover:text-dark-blue font-bold py-2 px-4 w-full h-10 rounded-md">Filters</button>
+              {/*<Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+              >
+                  <HierarchicalMenu
+                  attributes={[
+                    'categories.level0',
+                    'categories.level1',
+                    'categories.level2',
+                    'categories.level3',
+                  ]} 
+                  classNames={{
+                    root: 'sm:hidden flex-none min-w-[150px] pr-3 my-4',
+                    count: 'bg-[#dfe2ee] rounded-lg py-0.5 px-1.5 ml-2',
+                    list: 'ml-4 text-gray-700',
+                    selectedItem: 'text-dark-blue'
+                  }}
+                />
+              </Modal>
+                */}
+            
+            
+            
+            <HierarchicalMenu
+                attributes={[
+                  'categories.level0',
+                  'categories.level1',
+                  'categories.level2',
+                  'categories.level3',
+                ]} 
+                classNames={{
+                  root: 'sm:hidden flex-none min-w-[150px] pr-3 my-4',
+                  count: 'bg-[#dfe2ee] rounded-lg py-0.5 px-1.5 ml-2',
+                  list: 'ml-4 text-gray-700',
+                  selectedItem: 'text-dark-blue'
+                }}
+              />
 
             <SearchBox classNames={{
               root:'w-full relative whitespace-nowrap ', 
@@ -104,7 +156,7 @@ const ClassesPage = props => {
                   'categories.level3',
                 ]} 
                 classNames={{
-                  root: 'flex-none min-w-[150px] pr-3 my-4',
+                  root: 'hidden sm:flex flex-none min-w-[150px] pr-3 my-4',
                   count: 'bg-[#dfe2ee] rounded-lg py-0.5 px-1.5 ml-2',
                   list: 'ml-4 text-gray-700',
                   selectedItem: 'text-dark-blue'
