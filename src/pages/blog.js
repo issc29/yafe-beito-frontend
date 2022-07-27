@@ -44,11 +44,9 @@ query  {
 const serializers = {
   types: {
     youtube: ({value}) => {
-      console.log("NODE")
-      console.log(value)
       const { url } = value
       const id = getYouTubeId(url)
-      return (<YouTube videoId={id} />)
+      return (<YouTube videoId={id} className="m-auto" />)
     }
   }
 }
@@ -80,12 +78,13 @@ const BlogPage = props => {
       <Container>
         <div className="flex-col">
           <div className="mx-10 bg-white/75">
-            <h2 className="text-center">Blog</h2>
+            <h1 className="text-center text-dark-blue text-4xl">Blog</h1>
             {data.projects.edges.map((blog) => (
-              <div className="bg-gray-400 m-2">
-                <h3 className="text-center">{blog.node['title']}</h3>
+              <div className="text-center m-2 bg-dark-blue/20 border-dark-blue border-4">
+                <h2 className="text-center text-2xl">{blog.node['title']}</h2>
                 <PortableText value={blog.node['_rawBody']} components={serializers}/>
               </div>
+              
             ))}
             
           </div>

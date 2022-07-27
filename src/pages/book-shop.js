@@ -49,8 +49,12 @@ const BookShopPage = props => {
       <Container>
         <div className="flex-col">
           <div className="mx-10 bg-white/75">
-            <h2 className="text-center">Hakham Faur's Books</h2>
-            <PortableText value={data.site.booksText}/>
+            <div className="p-4 text-justify">
+              <h1 className="text-center text-dark-blue text-4xl pb-4">Hakham Faur's Books</h1>
+              <div className="text-lg"> 
+                <PortableText value={data.site.booksText}/>
+              </div>
+            </div>
           </div>
         </div>
 

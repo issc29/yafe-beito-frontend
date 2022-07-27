@@ -119,7 +119,7 @@ const ContactPage = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex flex-col mx-10 bg-white/75 ">
-          <h2 className="block text-center">Contact Us</h2>
+          <h1 className="text-center text-dark-blue text-4xl">Contact Us</h1>
           <span className="text-center mb-5">
             11 Hafetz Hayim St. Raananna Israel 4333911  <br/>
             YafeBeito@gmail.com<br/>
@@ -185,7 +185,7 @@ const ContactPage = props => {
             />
             {showCaptchaError ? <span id="captchaError" className="text-red-500">reCaptcha is Required!</span> : null}
             <div className="mb-3">
-            <button type="submit" className="m-auto  bg-bronzetone hover:bg-dark-green-copper text-white font-bold py-2 px-4 w-full h-10 rounded-[50px]">Submit</button>
+            <button type="submit" className="bg-dark-blue text-lg text-white hover:bg-white hover:text-dark-blue font-bold py-2 px-4 w-full h-10 rounded-md">Submit</button>
             </div>
           </form>
           {showSubmitted && submitSuccess ? <span id="submitSuccessMessage" className="text-center text-green-500 mb-3">Thank you for submitting your message!</span> : null}

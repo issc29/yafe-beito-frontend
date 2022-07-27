@@ -53,13 +53,12 @@ const AboutYafeBeitoPage = props => {
     <Layout bgImage={bgImage}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <div className="flex-col">
-
-          <h2 className="text-center">Yafe Be'ito: Hakham Dr. José Faur Studies Foundation</h2>
-          <PortableText value={data.site.aboutYafeBeito}/>
-
+      <div className="flex-col p-4 text-justify">
+          <h1 className="text-center text-dark-blue text-4xl pb-4">Yafe Be'ito: Hakham Dr. José Faur Studies Foundation</h1>
+          <div className="text-lg">
+            <PortableText value={data.site.aboutYafeBeito}/>
+          </div>
         </div>
-
       </Container>
     </Layout>
   );
