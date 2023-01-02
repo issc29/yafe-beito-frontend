@@ -14,6 +14,7 @@ import Modal from 'react-modal';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement } from 'react-instantsearch-hooks-web';
 
+
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
 
 
@@ -162,10 +163,12 @@ const ClassesPage = props => {
                   selectedItem: 'text-dark-blue'
                 }}
               />
+             
               <Hits 
                 hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} />} 
                 classNames={{root:'flex-auto'}} 
               />
+      
             </div>
           </InstantSearch>
           <AudioPlayerCustom Track={audioSrc}/>
