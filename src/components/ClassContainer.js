@@ -34,7 +34,8 @@ const ClassContainer = props => {
                     "categories.level0": getCategoryHierarchy(category)
                   },
               }));
-            }}>#{getMostSpecificCategory(category)}</button>
+            }}
+            >#{getMostSpecificCategory(category)}</button>
           ))
         ))
         }</div>

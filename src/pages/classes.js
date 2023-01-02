@@ -7,12 +7,12 @@ import bgImage from '../images/about_bg.jpg'
 import { PlayIcon } from "@heroicons/react/outline";
 import 'react-h5-audio-player/lib/styles.css';
 import AudioPlayerCustom from "./audioPlayerCustom";
-import ClassContainer from "./ClassContainer";
+import ClassContainer from "../components/ClassContainer";
 import Modal from 'react-modal';
 
 
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement } from 'react-instantsearch-hooks-web';
+import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement, useInstantSearch } from 'react-instantsearch-hooks-web';
 
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
@@ -163,7 +163,6 @@ const ClassesPage = props => {
                   selectedItem: 'text-dark-blue'
                 }}
               />
-             
               <Hits 
                 hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} />} 
                 classNames={{root:'flex-auto'}} 
