@@ -1,5 +1,5 @@
 
-const indexName = `Tracks`
+const indexName = (process.env.ALGOLIA_INDEX) ?  process.env.ALGOLIA_INDEX : `Tracks_DEV`
 const tracksQuery = `{
   tracks: allSanityAudioTracks {
     edges {

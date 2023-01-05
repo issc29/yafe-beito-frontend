@@ -12,7 +12,7 @@ import Modal from 'react-modal';
 
 
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement, useInstantSearch } from 'react-instantsearch-hooks-web';
+import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement, useInstantSearch, Pagination } from 'react-instantsearch-hooks-web';
 
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
@@ -51,6 +51,7 @@ export const query = graphql`
 const ClassesPage = props => {
   const { data, errors } = props;
   const [audioSrc, setAudioSrc] = useState({id: ""})
+  const algoliaIndex = (process.env.ALGOLIA_INDEX) ?  process.env.ALGOLIA_INDEX : `Tracks_DEV`
 
   if (errors) {
     return (
@@ -86,7 +87,7 @@ const ClassesPage = props => {
       <Container>
         <div className="flex-col">
           <h1 className="text-center text-dark-blue text-4xl">Classes</h1>
-          <InstantSearch searchClient={searchClient} indexName="Tracks">
+          <InstantSearch searchClient={searchClient} indexName={algoliaIndex} routing={true}>
             <button className="sm:hidden bg-dark-blue text-lg text-white hover:bg-white hover:text-dark-blue font-bold py-2 px-4 w-full h-10 rounded-md">Filters</button>
               {/*<Modal
                 isOpen={modalIsOpen}
@@ -163,11 +164,21 @@ const ClassesPage = props => {
                   selectedItem: 'text-dark-blue'
                 }}
               />
-              <Hits 
-                hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} />} 
-                classNames={{root:'flex-auto'}} 
-              />
-      
+              <div>
+                <Hits 
+                  hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} algoliaIndex={algoliaIndex}/>} 
+                  classNames={{root:'flex-auto'}} 
+                />
+                <Pagination 
+                  classNames={{
+                    root: 'text-dark-blue leading-none',
+                    list: 'flex justify-center',
+                    item: 'mx-0.5 py-1.5 rounded hover:bg-gray-400 hover:text-white' ,
+                    selectedItem: 'bg-dark-blue text-white',
+                    link: 'cursor-pointer py-1.5 px-3 ',
+                  }}
+                />
+               </div>
             </div>
           </InstantSearch>
           <AudioPlayerCustom Track={audioSrc}/>

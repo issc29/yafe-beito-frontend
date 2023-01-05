@@ -1,7 +1,13 @@
 // Load variables from `.env` as soon as possible
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`
-})
+if (process.env.CI) {
+  require("dotenv").config({
+    path: `.env.ci`,
+  })
+} else {
+  require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+  })
+}
 
 const clientConfig = require('./client-config')
 const token = process.env.SANITY_READ_TOKEN
