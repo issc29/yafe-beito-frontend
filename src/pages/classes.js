@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -9,8 +9,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import AudioPlayerCustom from "./audioPlayerCustom";
 import ClassContainer from "../components/ClassContainer";
 import Modal from 'react-modal';
-
-
+import { useCookies } from 'react-cookie';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, RefinementList, CurrentRefinements, HierarchicalMenu, ClearRefinements, Configure, ToggleRefinement, useInstantSearch, Pagination } from 'react-instantsearch-hooks-web';
 
@@ -49,9 +48,31 @@ export const query = graphql`
 `;
 
 const ClassesPage = props => {
+  const [cookies, setCookie, removeCookie] = useCookies(['yafe-beito']);
   const { data, errors } = props;
   const [audioSrc, setAudioSrc] = useState({id: ""})
+  const [audioTime, setAudioTime] = useState(0)
+  const [play, setPlay] = useState(false)
   const algoliaIndex = (process.env.ALGOLIA_INDEX) ?  process.env.ALGOLIA_INDEX : `Tracks_DEV`
+
+  useEffect(() => {
+    var audioData = ("audioData" in cookies) ? cookies.audioData : "{}"
+    setAudioSrc(audioData)
+  }, [])
+
+
+  useEffect(() => {
+    setCookie('audioData', audioSrc)
+  }, [audioSrc])
+
+  useEffect(() => {
+    setCookie('time',Math.floor(audioTime))
+    var modifiedAudioSrc = JSON.parse(JSON.stringify(audioSrc))
+    modifiedAudioSrc.linkWithTime = modifiedAudioSrc.link + "#t=" + audioTime
+    setCookie('audioData', modifiedAudioSrc)
+  }, [audioTime])
+
+
 
   if (errors) {
     return (
@@ -166,7 +187,7 @@ const ClassesPage = props => {
               />
               <div>
                 <Hits 
-                  hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} algoliaIndex={algoliaIndex}/>} 
+                  hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={setAudioSrc} algoliaIndex={algoliaIndex} setPlay={setPlay}/>} 
                   classNames={{root:'flex-auto'}} 
                 />
                 <Pagination 
@@ -181,7 +202,7 @@ const ClassesPage = props => {
                </div>
             </div>
           </InstantSearch>
-          <AudioPlayerCustom Track={audioSrc}/>
+          <AudioPlayerCustom Track={audioSrc} setAudioTime={setAudioTime} play={play} setPlay={setPlay}/>
         </div>
       </Container>
     </Layout>

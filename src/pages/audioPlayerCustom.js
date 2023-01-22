@@ -1,25 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'react-h5-audio-player/lib/styles.css';
 import { PlayIcon, PauseIcon } from "@heroicons/react/solid";
 import ReactPlayer from 'react-player'
-
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 
-
 const AudioPlayerCustom = (props) => {
-
   const player = React.useRef()
   const trackId = props.Track.id || ""
-
-  console.log(props)
+  
+  useEffect(() => {
+    console.log("props.Track")
+    if(props.play) {
+      player.current.audio.current.play()
+      props.setPlay(false)
+     }
+  }, [props.Track])
 
   return (
     <>
-    <ReactPlayer
-        className='react-player'
-        width='100%'
-        height='100%'
-      />
       <div
         className="fixed left-0 bottom-0 min-w-full z-10 bg-dark-blue" >
         <div className="relative h-full w-full sm:flex text-center sm:text-left">
@@ -29,10 +27,12 @@ const AudioPlayerCustom = (props) => {
           </div>
 
           <AudioPlayer
-            src={props.Track.link }
+            autoPlay={false} 
+            autoPlayAfterSrcChange={false}
+            src={(props.Track.linkWithTime) ? props.Track.linkWithTime : props.Track.link}
             showJumpControls={false} 
-            onPlay={e => console.log("onPlay")}
             volume=".5"
+            onListen={e => props.setAudioTime(e.target.currentTime)}
             showFilledVolume={true} 
             showDownloadProgress={false}
             customAdditionalControls={[]} 

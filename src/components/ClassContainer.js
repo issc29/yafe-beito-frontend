@@ -17,7 +17,10 @@ const ClassContainer = props => {
       <div className="flex-none w-20">
         <PlayIcon 
           className="h-20 w-20 text-white hover:text-gray-400" 
-          onClick={() => {props.setAudioSrc(hitData)}} >
+          onClick={() => {
+            props.setPlay(true)
+            props.setAudioSrc(hitData)
+            }} >
         </PlayIcon>
       </div>
       <div className="flex-1 flex flex-col">
@@ -27,7 +30,6 @@ const ClassContainer = props => {
             <button 
               className="float-right bg-gray-500 hover:bg-gray-400 px-2.5 rounded-lg mx-2" 
               onClick={() => {
-                console.log(hitData)
                 const link = window.location.href.split('?')[0] + `?${algoliaIndex}%5Bquery%5D=${hitData.tapeID}`
                 navigator.clipboard.writeText(link);
                 setShareButtonText("Link Copied!")
