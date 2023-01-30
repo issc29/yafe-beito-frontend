@@ -10,8 +10,7 @@ import Dropdown from "./dropdown";
 
 const aboutLinks = [
   {"name":"The Hakham", "link":"/about/hakham"},
-  {"name":"Yafe Be'to", "link":"/about/yafe-beito"},
-  {"name":"Team", "link":"/"}
+  {"name":"Yafe Be'to", "link":"/about/yafe-beito"}
 ]
 
 const classLinks = [
@@ -30,8 +29,6 @@ const navigation = [
   { type: 'link', name: 'Home', current: false, href: '/'},
   { type: 'dropdown', name: 'About', current: false, options: aboutLinks},
   { type: 'link', name: 'Classes', current: false, href: '/classes'},
-  { type: 'link', name: 'Blog', current: false, href: '/blog'},
-  { type: 'link', name: 'Bookshop', current: false, href: '/book-shop'},
   { type: 'link', name: 'Donate', current: false, href: '/donate'},
   { type: 'link', name: 'Contact', current: false, href: '/contact'},
 ]

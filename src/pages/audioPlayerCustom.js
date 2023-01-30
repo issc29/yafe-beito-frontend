@@ -3,6 +3,8 @@ import 'react-h5-audio-player/lib/styles.css';
 import { PlayIcon, PauseIcon } from "@heroicons/react/solid";
 import ReactPlayer from 'react-player'
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import { MdForward10 } from "@react-icons/all-files/md/MdForward10";
+import { MdReplay10 } from "@react-icons/all-files/md/MdReplay10";
 
 const AudioPlayerCustom = (props) => {
   const player = React.useRef()
@@ -30,7 +32,8 @@ const AudioPlayerCustom = (props) => {
             autoPlay={false} 
             autoPlayAfterSrcChange={false}
             src={(props.Track.linkWithTime) ? props.Track.linkWithTime : props.Track.link}
-            showJumpControls={false} 
+            showJumpControls={true} 
+            progressJumpSteps={{backward: 10000, forward: 10000 }}
             volume=".5"
             onListen={e => props.setAudioTime(e.target.currentTime)}
             showFilledVolume={true} 
@@ -47,6 +50,10 @@ const AudioPlayerCustom = (props) => {
                 RHAP_UI.VOLUME,
               ]
             }
+            customIcons={{
+              rewind: <MdReplay10/>,
+              forward: <MdForward10/> 
+            }}
             ref={player}
           />
         </div>

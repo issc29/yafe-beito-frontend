@@ -3,21 +3,28 @@ import React from "react";
 import fbIcon from '../images/fb.png'
 import igIcon from '../images/ig.png'
 import ytIcon from '../images/yt.png'
+import { FaWhatsapp } from "@react-icons/all-files/fa/FaWhatsapp";
+import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
+import { FaYoutube } from "@react-icons/all-files/fa/FaYoutube";
+import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 
 import * as styles from "./layout.module.css";
 
 const Footer = () => (
   <footer className="bg-dark-blue text-white py-4 absolute bottom-0 inset-x-0 ">
       <div >
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mb-3">
+          <a href="" target="_blank">
+            <FaWhatsapp className="mx-2" size="3em"/>
+          </a>
           <a href="https://www.facebook.com/profile.php?id=100075891844001/" target="_blank">
-            <img src={fbIcon} className="h-12 w-12" />
+            <FaFacebook className="mx-2" size="3em"/>
           </a>
           <a href="https://www.youtube.com/channel/UCzHh9EVGZ9O3WtTGL8bp7lw" target="_blank">
-            <img src={ytIcon} className="h-12 w-12" />
+            <FaYoutube className="mx-2" size="3em"/>
           </a>
           <a href="https://www.instagram.com/yafebeito/" target="_blank">
-            <img src={igIcon} className="h-12 w-12" />
+            <FaInstagram className="mx-2" size="3em"/>
           </a>
         </div>
         <div className={styles.siteInfo}>

@@ -50,7 +50,7 @@ function LayoutContainer(props) {
             'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
           );
         }
-        return (
+        return (  
           <Layout
             {...props}
             showNav={showNav}
