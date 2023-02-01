@@ -25,7 +25,7 @@ const ClassContainer = props => {
       </div>
       <div className="flex-1 flex flex-col">
         <div className=" flex">
-          <div className="text-2xl">{hitData.title}</div>
+          <div className="text-2xl">{hitData.tapeNumber}. {hitData.title}</div>
           <div className="flex-1" >
             <button 
               className="float-right bg-gray-500 hover:bg-gray-400 px-2.5 rounded-lg mx-2" 

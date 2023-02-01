@@ -27,6 +27,7 @@ export const query = graphql`
         description
         id
         tapeSide
+        tapeNumber
         title
         link
         language

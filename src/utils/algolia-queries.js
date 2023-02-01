@@ -13,6 +13,7 @@ const tracksQuery = `{
         link
         _id
         tapeSide
+        tapeNumber
         allTags {
           name
         }
@@ -27,7 +28,7 @@ const tracksQuery = `{
   }
 }
 `
-function trackToAlgoliaRecord({ node: { id, title, tapeside, link, language, description, dateGiven, artist, allTags, tagsByCategory, _id } }) {
+function trackToAlgoliaRecord({ node: { id, title, tapeside, link, language, description, dateGiven, artist, allTags, tagsByCategory, _id, tapeNumber } }) {
 
     var tags = []
     for(const tag of allTags) {
@@ -38,6 +39,7 @@ function trackToAlgoliaRecord({ node: { id, title, tapeside, link, language, des
     objectID: id,
     title,
     tapeside,
+    tapeNumber,
     language,
     description,
     dateGiven,
