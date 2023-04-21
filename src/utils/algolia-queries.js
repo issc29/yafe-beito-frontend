@@ -28,6 +28,17 @@ const tracksQuery = `{
   }
 }
 `
+
+const replicas = {
+  CLASS_ASC: `${indexName}_classnum_asc`,
+  CLASS_DSC: `${indexName}_classnum_dsc`,
+  DATE_ASC: `${indexName}_date_asc`,
+  DATE_DSC: `${indexName}_date_dsc`,
+  TITLE_ASC: `${indexName}_title_asc`,
+  TITLE_DSC: `${indexName}_title_dsc`,
+}
+
+
 function trackToAlgoliaRecord({ node: { id, title, tapeside, link, language, description, dateGiven, artist, allTags, tagsByCategory, _id, tapeNumber } }) {
 
     var tags = []
@@ -56,12 +67,15 @@ const queries = [
     transformer: ({ data }) => data.tracks.edges.map(trackToAlgoliaRecord),
     indexName,
     settings: { 
+      replicas: Object.values(replicas),
       attributesForFaceting: [
-        'categories.level0',
-        'categories.level1',
-        'categories.level2',
-        'categories.level3',
-    ] },
+        'categories.level0', 
+        'categories.level1', 
+        'categories.level2', 
+        'categories.level3'
+      ]
+    },
   },
+  
 ]
 module.exports = queries

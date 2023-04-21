@@ -5,13 +5,13 @@ import ReactPlayer from 'react-player'
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import { MdForward10 } from "@react-icons/all-files/md/MdForward10";
 import { MdReplay10 } from "@react-icons/all-files/md/MdReplay10";
+import { isMobile } from 'react-device-detect';
 
 const AudioPlayerCustom = (props) => {
   const player = React.useRef()
   const trackId = props.Track.id || ""
-  
+
   useEffect(() => {
-    console.log("props.Track")
     if(props.play) {
       player.current.audio.current.play()
       props.setPlay(false)
@@ -47,7 +47,7 @@ const AudioPlayerCustom = (props) => {
                 RHAP_UI.CURRENT_TIME,
                 RHAP_UI.PROGRESS_BAR,
                 RHAP_UI.DURATION,
-                RHAP_UI.VOLUME,
+                ... (isMobile) ? [] : [RHAP_UI.VOLUME],
               ]
             }
             customIcons={{

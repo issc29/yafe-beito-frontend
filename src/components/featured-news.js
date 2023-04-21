@@ -7,6 +7,7 @@ const query = graphql`
 query  {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       _rawLatestNews
+      displayLatestNews
     }	
   }
 `;
@@ -23,7 +24,7 @@ export default function FeaturedNews() {
         }
 
         return (
-          <div className="text-center text-dark-blue">
+          <div className={`text-center text-dark-blue  ${(data.site["displayLatestNews"]) ? '': 'hidden'}`}>
            <hr className="border-2 border-dark-blue mx-auto w-1/2 mb-4" />
             <div className="text-center text-5xl">Latest News</div>
             <BlockContent blocks={data.site["_rawLatestNews"]} />

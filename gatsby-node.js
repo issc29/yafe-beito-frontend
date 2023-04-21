@@ -2,6 +2,7 @@
 
 const {isFuture,parseISO} = require('date-fns')
 const { reporter } = require('gatsby/node_modules/gatsby-cli/lib/reporter/reporter')
+const { syncAlgoliaSettings } = require('./src/utils/algolia-settings')
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -190,4 +191,8 @@ exports.createResolvers = ({createResolvers}) => {
       }
     }
   })
+}
+
+exports.onPostBuild = async function() {
+  await syncAlgoliaSettings()
 }

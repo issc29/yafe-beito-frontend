@@ -13,6 +13,7 @@ const clientConfig = require('./client-config')
 const token = process.env.SANITY_READ_TOKEN
 
 const isProd = process.env.NODE_ENV === 'production'
+const indexName = (process.env.ALGOLIA_INDEX) ?  process.env.ALGOLIA_INDEX : `Tracks_DEV`
 
 module.exports = {
   plugins: [
@@ -34,9 +35,6 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/utils/algolia-queries"),
-        settings: {
-          attributesForFaceting: ['categories.level0', 'categories.level1', 'categories.level2', 'categories.level3']
-        }
       },
     }
   ]
