@@ -13,18 +13,6 @@ const aboutLinks = [
   {"name":"Yafe Be'to", "link":"/about/yafe-beito"}
 ]
 
-const classLinks = [
-  {"name":"Tora"},
-  {"name":"Nebi'im"},
-  {"name":"Ketubim"},
-  {"name":"Mishna"},
-  {"name":"Talmud"},
-  {"name":"Geonim"},
-  {"name":"Haramban"},
-  {"name":"Hakhme Sepharad"},
-  {"name":"Contemporary"},
-]
-
 const navigation = [
   { type: 'link', name: 'Home', current: false, href: '/'},
   { type: 'dropdown', name: 'About', current: false, options: aboutLinks},
@@ -102,6 +90,29 @@ export default function NavBar({logo}) {
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 ">
               {navigation.map((item) => (
+                //PUT HERE: IF item
+                (item.type == "dropdown") 
+                ?
+                item.options.map((option) => {
+                  const name = item.name + " " + option.name
+                  const link = option.link
+
+                  return (
+                    <Disclosure.Button
+                      key={name}
+                      as="a"
+                      href={link}
+                      className={classNames(
+                        item.current ? 'bg-gray-900 text-white' : 'bg-dark-blue text-white no-underline text-xl hover:bg-gray-700 hover:text-white',
+                        'block px-3 py-2 rounded-md text-base font-medium'
+                      )}
+                      aria-current={item.current ? 'page' : undefined}
+                    >
+                      {name}
+                  </Disclosure.Button>
+                  )
+                })
+                : 
                 <Disclosure.Button
                   key={item.name}
                   as="a"
