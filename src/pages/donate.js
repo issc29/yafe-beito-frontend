@@ -48,7 +48,7 @@ const DonatePage = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
-          <div className="mx-10 bg-white/75">
+          <div className="sm:mx-10 bg-white/75">
             <div className="p-4 text-justify">
               <h1 className="text-center text-dark-blue text-4xl pb-4">Donate</h1>
               <span className="text-lg">We appreciate your support! Soon you will be able to donate to us directly from this page. 

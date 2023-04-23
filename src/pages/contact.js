@@ -118,7 +118,7 @@ const ContactPage = props => {
     <Layout bgImage={bgImage} bgResizable={true}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <div className="flex flex-col mx-10 bg-white/75 ">
+        <div className="flex flex-col sm:mx-10 bg-white/75 ">
           <h1 className="text-center text-dark-blue text-4xl">Contact Us</h1>
           <span className="text-center mb-5">
             11 Hafetz Hayim St. Raananna Israel 4333911  <br/>

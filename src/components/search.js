@@ -7,6 +7,7 @@ import DropdownSort from "../components/dropdown-sort";
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
 import CustomSortBy from "./custom-sort-by";
+import { isMobile } from 'react-device-detect';
 
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
@@ -93,18 +94,21 @@ const Search = props => {
               'categories.level3',
             ]} 
             classNames={{
-              root: 'hidden sm:flex flex-none min-w-[150px] pr-3 my-4',
+              root: 'hidden sm:flex flex-none pr-3 my-4',
               count: 'bg-[#dfe2ee] rounded-lg py-0.5 px-1.5 ml-2',
               list: 'ml-4 text-gray-700',
               selectedItem: 'text-dark-blue'
             }}
           />
           <div>
-            <Hits 
-              hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={props.setAudioSrc} algoliaIndex={algoliaIndex} setPlay={props.setPlay}/>} 
-              classNames={{root:'flex-auto'}} 
-            />
+            <div className="flex">
+              <Hits 
+                hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={props.setAudioSrc} algoliaIndex={algoliaIndex} setPlay={props.setPlay}/>} 
+                classNames={{root:'flex-auto'}} 
+              />
+            </div>
             <Pagination 
+              padding={(isMobile) ? 1 : 3}
               classNames={{
                 root: 'text-dark-blue leading-none',
                 list: 'flex justify-center',

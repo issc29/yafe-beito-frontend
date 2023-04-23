@@ -89,7 +89,7 @@ const ClassesPage = props => {
     <Layout bgImage={bgImage} hideFooter={true} bgResizable={true}>
       <Container>
         <div className="flex-col">
-          <div className="mx-10 p-3 bg-white/75">
+          <div className="sm:mx-10 p-3 bg-white/75">
             <h1 className="text-center text-dark-blue text-4xl">Classes</h1>
             <Search setAudioSrc={setAudioSrc} setPlay={setPlay} />
             <AudioPlayerCustom Track={audioSrc} setAudioTime={setAudioTime} play={play} setPlay={setPlay}/>
