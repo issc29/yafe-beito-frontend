@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PlayIcon, ShareIcon } from "@heroicons/react/outline";
 import 'react-h5-audio-player/lib/styles.css';
 import { useInstantSearch } from 'react-instantsearch-hooks-web';
+import CopiedModal from "./copied-modal";
 
 
 const ClassContainer = props => {
@@ -10,7 +11,19 @@ const ClassContainer = props => {
   const tags = (hitData._tags || [])
   const categoriesHierarchy = (hitData.categories || [])
   const algoliaIndex = props.algoliaIndex
-  const [shareButtonText, setShareButtonText] = useState("Share Class")
+
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeCopiedModal() {
+    setIsOpen(false)
+  }
+
+  function openCopiedModal() {
+    setIsOpen(true)
+    setTimeout(() => {
+      closeCopiedModal()
+    }, 1500);
+  }
 
   return (
     <div className="flex bg-dark-blue text-white my-4 py-2">
@@ -41,11 +54,14 @@ const ClassContainer = props => {
               onClick={() => {
                 const link = window.location.href.split('?')[0] + `?${algoliaIndex}%5Bquery%5D=${hitData.tapeID}`
                 navigator.clipboard.writeText(link);
+                openCopiedModal()
                 }} >
             </ShareIcon>
           </div>
-        
+        <CopiedModal isOpen={isOpen} closeModal={closeCopiedModal}/>
       </div>
+
+
     </div>
   );
 };
