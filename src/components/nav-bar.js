@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React from "react";
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { imageUrlFor } from "../lib/image-url";
@@ -53,7 +53,10 @@ export default function NavBar({logo}) {
                       .width(170)
                       .height(170)
                       .url()}
-                    alt="Workflow"
+                    title="Yafe Beito"
+                    onClick={() => {
+                      navigate("/")
+                    }}
                   />
                   <img
                     className="hidden lg:block h-44 w-auto"
@@ -61,7 +64,10 @@ export default function NavBar({logo}) {
                       .width(170)
                       .height(170)
                       .url()}
-                    alt="Workflow"
+                      title="Yafe Beito"
+                      onClick={() => {
+                        navigate("/")
+                      }}
                   />
                 </div>
                 <div className="hidden sm:block sm:ml-6 mt-6 ">

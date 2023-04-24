@@ -121,10 +121,8 @@ const ContactPage = props => {
         <div className="flex flex-col sm:mx-10 bg-white/75 ">
           <h1 className="text-center text-dark-blue text-4xl">Contact Us</h1>
           <span className="text-center mb-5">
-            11 Hafetz Hayim St. Raananna Israel 4333911  <br/>
-            YafeBeito@gmail.com<br/>
-            IL: +972-50-760-7742<br/>
-            USA: +1-929-224-3903<br/>
+            Raananna, Israel<br/>
+            contact@yafebeito.com<br/>
           </span>
           <form onSubmit={formik.handleSubmit} className={`flex flex-col gap-6 m-auto ${showForm ? "" : "hidden"}`}>
             <label htmlFor="name" className="">
