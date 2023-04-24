@@ -14,10 +14,10 @@ const Footer = () => (
   <footer className="bg-dark-blue text-white py-4 absolute bottom-0 inset-x-0 ">
       <div >
         <div className="flex items-center justify-center mb-3">
-          <a href="wa.me/+19292243903" target="_blank">
+          <a href="https://wa.me/+19292243903" target="_blank">
             <FaWhatsapp className="mx-2" size="3em"/>
           </a>
-          <a href="https://www.facebook.com/profile.php?id=100075891844001/" target="_blank">
+          <a href="https://www.facebook.com/profile.php?id=100075891844001" target="_blank">
             <FaFacebook className="mx-2" size="3em"/>
           </a>
           <a href="https://www.youtube.com/channel/UCzHh9EVGZ9O3WtTGL8bp7lw" target="_blank">
