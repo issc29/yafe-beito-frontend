@@ -86,7 +86,7 @@ const ClassesPage = props => {
   const player = React.useRef(null);
 
   return (
-    <Layout bgImage={bgImage} hideFooter={true} bgResizable={true}>
+    <Layout bgImage={bgImage} hideFooter={true}>
       <Container>
         <div className="flex-col">
           <div className="sm:mx-10 p-3 bg-white/75">

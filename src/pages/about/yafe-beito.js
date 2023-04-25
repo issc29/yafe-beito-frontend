@@ -10,7 +10,7 @@ import GraphQLErrorList from "../../components/graphql-error-list";
 import ProjectPreviewGrid from "../../components/project-preview-grid";
 import SEO from "../../components/seo";
 import Layout from "../../containers/layout";
-import bgImage from '../../images/book_bg.png'
+import bgImage from '../../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
 
 export const query = graphql`
@@ -50,7 +50,7 @@ const AboutYafeBeitoPage = props => {
   }
 
   return (
-    <Layout bgImage={bgImage} bgResizable={true}>
+    <Layout bgImage={bgImage}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
       <div className="flex-col p-4 text-justify bg-white/75">

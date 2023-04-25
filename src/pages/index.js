@@ -13,7 +13,7 @@ import Gallery from "../components/gallery";
 import FeaturedClasses from "../components/featured-classes";
 import FeaturedNews from "../components/featured-news";
 import siteNameIllustration from '../images/site_name_illustration.png'
-import bgImage from '../images/bg_main_page.png'
+import bgImage from '../images/contact_bg.jpg'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -92,13 +92,15 @@ const IndexPage = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
-          <h1 hidden>Welcome to {site.title}</h1>
-          <img src={siteNameIllustration} className="block w-80 place-content-center m-auto" />
-          <h2 className="text-center text-3xl text-white">Hakham Dr. José Faur Studies </h2>
-        </div>
+          <div className="sm:mx-10 p-10 bg-white/60">
+            <h1 hidden>Welcome to {site.title}</h1>
+            <img src={siteNameIllustration} className="block w-80 place-content-center m-auto" />
+            <h2 className="text-center text-3xl text-white">Hakham Dr. José Faur Studies </h2>
         <Gallery />
         <FeaturedClasses />
         <FeaturedNews />
+        </div>
+        </div>
       </Container>
     </Layout>
   );

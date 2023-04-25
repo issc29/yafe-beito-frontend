@@ -44,7 +44,7 @@ const DonatePage = props => {
   }
 
   return (
-    <Layout bgImage={bgImage} bgResizable={true}>
+    <Layout bgImage={bgImage}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">

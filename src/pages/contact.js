@@ -115,7 +115,7 @@ const ContactPage = props => {
   });
 
   return (
-    <Layout bgImage={bgImage} bgResizable={true}>
+    <Layout bgImage={bgImage} >
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex flex-col sm:mx-10 bg-white/75 ">
