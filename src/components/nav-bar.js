@@ -48,7 +48,7 @@ export default function NavBar({logo}) {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-44 w-auto"
+                    className="block lg:hidden h-44 w-auto cursor-pointer"
                     src={imageUrlFor(buildImageObj(logo))
                       .width(170)
                       .height(170)
@@ -59,7 +59,7 @@ export default function NavBar({logo}) {
                     }}
                   />
                   <img
-                    className="hidden lg:block h-44 w-auto"
+                    className="hidden lg:block h-44 w-auto cursor-pointer"
                     src={imageUrlFor(buildImageObj(logo))
                       .width(170)
                       .height(170)
