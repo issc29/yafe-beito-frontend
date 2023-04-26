@@ -10,7 +10,7 @@ import Dropdown from "./dropdown";
 
 const aboutLinks = [
   {"name":"The Hakham", "link":"/about/hakham"},
-  {"name":"Yafe Be'to", "link":"/about/yafe-beito"}
+  {"name":"Yafe Be'ito", "link":"/about/yafe-beito"}
 ]
 
 const navigation = [
