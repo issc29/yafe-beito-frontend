@@ -178,7 +178,7 @@ const ContactPage = props => {
               {formik.touched.message && formik.errors.message ? <div className="text-red-500">{formik.errors.message}</div> : null}
             </label>
             <ReCAPTCHA
-              sitekey="6LdkRwofAAAAADLKsG7Vyt6mJhKBj2Uw3Xelsi1V"
+              sitekey="6LeEpO4lAAAAAFf-40lpw3phmYBSbtFfXK-elK7E"
               onChange={(response) => { formik.setFieldValue("captcha", response); }}
             />
             {showCaptchaError ? <span id="captchaError" className="text-red-500">reCaptcha is Required!</span> : null}
