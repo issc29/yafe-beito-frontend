@@ -64,6 +64,7 @@ const Search = props => {
               </Disclosure.Button>
               <Disclosure.Panel>
               <HierarchicalMenu
+              limit={30}
               attributes={[
                 'categories.level0',
                 'categories.level1',
@@ -87,6 +88,7 @@ const Search = props => {
         </div>
         <div className="flex">
           <HierarchicalMenu
+            limit={30}
             attributes={[
               'categories.level0',
               'categories.level1',
