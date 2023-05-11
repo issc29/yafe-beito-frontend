@@ -8,6 +8,7 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
 import CustomSortBy from "./custom-sort-by";
 import { isMobile } from 'react-device-detect';
+import { sortHierarchicalMenu } from "../lib/helpers";
 
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
@@ -23,7 +24,6 @@ const Search = props => {
     e.preventDefault();
     setDescendingSort(!descendingSort)
   }
-
   
   return (
     <div>
@@ -99,6 +99,7 @@ const Search = props => {
               list: 'ml-4 text-gray-700',
               selectedItem: 'text-dark-blue'
             }}
+            sortBy={sortHierarchicalMenu}
           />
           <div>
             <div className="flex">
