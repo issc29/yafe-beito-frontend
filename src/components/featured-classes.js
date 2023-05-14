@@ -32,6 +32,7 @@ export default function FeaturedClasses() {
             {data.site.featuredClasses.map((featuredClass) => (
                 <button 
                   className="bg-dark-blue text-lg text-white hover:bg-white hover:text-dark-blue font-bold py-5 sm:py-2 px-4 w-full sm:w-60 h-auto sm:h-24 rounded-md"
+                  key={featuredClass.url}
                   onClick={() => {
                     navigate(featuredClass.url)
                   }}

@@ -33,7 +33,6 @@ export function buildImageObj(source) {
 }
 
 export const sortHierarchicalMenu = (a, b) => {
-  console.log(a.name.toLocaleLowerCase() + b.name.toLocaleLowerCase())
 
   var menu = ["tora", "ketubim", "talmud", "harambam", "law", 
              "tefilla", "holidays", "jewish history",

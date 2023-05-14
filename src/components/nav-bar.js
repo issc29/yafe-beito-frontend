@@ -76,9 +76,9 @@ export default function NavBar({logo}) {
 
                       (item.type == "dropdown") 
                       ?
-                      <Dropdown name={item.name} options={item.options} />
+                      <Dropdown name={item.name} options={item.options} key={item.name}/>
                       : 
-                      <div className="w-28">
+                      <div className="w-28" key={item.href}>
                         <Link to={item.href} className={classNames(
                           item.current ? 'bg-white/50 text-site-grey' : ' bg-dark-blue text-white no-underline text-xl hover:bg-white/50 hover:text-dark-blue',
                           'w-28 h-11 px-4 py-2 rounded-md  text-center font-medium w-full inline-block'

@@ -26,10 +26,10 @@ export default function Dropdown({name, options}) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items open="false" className="absolute right-0 w-56 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {options.map((option) => (
-                <Menu.Item>
+                <Menu.Item key={option.link}>
                 {({ active }) => (
                   <Link to={option.link} className={`${
                     active ? 'bg-dark-blue text-white' : 'text-dark-blue'

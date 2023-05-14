@@ -75,6 +75,7 @@ function generateCategoryButtons(categoriesHierarchy){
     const a = categoriesHierarchy[level].map((category) => (
       <button 
         className="bg-gray-500 hover:bg-gray-400 px-2.5 rounded-lg mx-2 m-1" 
+        key={getMostSpecificCategory(category)}
         onClick={() => {
           setIndexUiState((prevIndexUiState) => ({
             ...prevIndexUiState,

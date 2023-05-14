@@ -87,7 +87,7 @@ export default function Gallery() {
                 items={items2}
                 options={options}
                 container={container}
-                eventsListener={eventsListener}
+                //eventsListener={eventsListener}
               />
             );
           }}
