@@ -116,7 +116,7 @@ const ContactPage = props => {
 
   return (
     <Layout bgImage={bgImage} >
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO title="Contact" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex flex-col sm:mx-10 bg-white/75 ">
           <h1 className="text-center text-dark-blue text-4xl">Contact Us</h1>

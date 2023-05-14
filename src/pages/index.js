@@ -89,7 +89,7 @@ const IndexPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO title="Home" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="sm:mx-10 p-10 bg-white/60">

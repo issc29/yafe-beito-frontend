@@ -45,7 +45,7 @@ const BookShopPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO title="Book Shop" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="mx-10 bg-white/75">
