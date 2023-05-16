@@ -34,12 +34,12 @@ export function buildImageObj(source) {
 
 export const sortHierarchicalMenu = (a, b) => {
 
+  var aValue = a.name.toLocaleLowerCase()
+  var bValue = b.name.toLocaleLowerCase()
+
   var menu = ["tora", "ketubim", "nebi'im", "talmud", "harambam", "tefilla", "personalities", "law", 
               "holidays", "hebrew grammar / diqduq", "jewish history", "jewish thought", "yehuda halevi / kuzari",
              "matte dan", "sephardic history", "misc", "other"]
-
-  var aValue = a.name.toLocaleLowerCase()
-  var bValue = b.name.toLocaleLowerCase()
   if (menu.includes(aValue)) {
     var aLocation = menu.indexOf(aValue)
     return (menu.includes(bValue, aLocation)) ? -1 : 1

@@ -26,7 +26,7 @@ const ClassContainer = props => {
   }
 
   return (
-    <div className="flex bg-dark-blue text-white my-4 py-2">
+    <div className="flex bg-dark-blue text-white my-4 py-2 rounded-md">
       <div className="flex-none w-20" title="Play">
         <PlayIcon 
           className="h-20 w-20 text-white hover:text-gray-400" 
