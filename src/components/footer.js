@@ -20,7 +20,7 @@ const Footer = () => (
           <a href="https://www.facebook.com/profile.php?id=100075891844001" target="_blank">
             <FaFacebook className="mx-2" size="3em"/>
           </a>
-          <a href="https://www.youtube.com/channel/UCzHh9EVGZ9O3WtTGL8bp7lw" target="_blank">
+          <a href="https://m.youtube.com/@yafebeito8160" target="_blank">
             <FaYoutube className="mx-2" size="3em"/>
           </a>
           <a href="https://www.instagram.com/yafebeito/" target="_blank">
