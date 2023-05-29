@@ -121,21 +121,20 @@ const ContactPage = props => {
         <div className="flex flex-col sm:mx-10 bg-white/75 ">
           <h1 className="text-center text-dark-blue text-4xl">Contact Us</h1>
           <span className="text-center mb-5">
-            Raananna, Israel<br/>
             contact@yafebeito.com<br/>
           </span>
-          <span className="text-center mb-5">
-            <div>
+          <span className="mx-4 mb-2">
+            <div className="mb-2 text-xl">
               We can use your help!
             </div>
-            <div>
-              As the digitizing and organizing of these tapes is a large and demanding project, is it a work in process. Your feedback is ever valuable. Some of the classes are mislabeled or insufficiently labeled. If you listen to a class where you find this to be the case, please don’t hesitate to reach out and let us know. 
+            <div className="mb-2">
+              Should you notice any missing information or inaccuracies in class descriptions, please contact us using the form below. Be sure to reference the unique number at the start of each course title, and provide as much detail as possible. 
             </div>
-            <div>
-              Each class has a unique number at the start of its title. Please let us know the unique number of the class you listened to and what class information we can add to make the listing more accurate. Any information is likely helpful. More detailed information is also greatly appreciated. This might include the year or location of the class, its placement in the series it was given, the page of Talmud being taught in that class, etc. Short outlines or even full transcripts of classes are also welcome. We hope to incorporate your feedback in order to make the digital library more valuable to all who use it.
+            <div className="mb-2">
+              Interested in getting involved in our project? We are looking for volunteers to write course outlines or full transcripts. Please contact us below to contribute.
             </div>
           </span>
-          <form onSubmit={formik.handleSubmit} className={`flex flex-col gap-6 m-auto ${showForm ? "" : "hidden"}`}>
+          <form onSubmit={formik.handleSubmit} className={`flex flex-col gap-6 m-auto ${showForm ? "" : "hidden"} mx-4`}>
             <label htmlFor="name" className="">
               <span>Name</span>
               <input
