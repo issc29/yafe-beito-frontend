@@ -16,7 +16,7 @@ const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.en
 
 
 const Search = props => {
-  const algoliaIndex = (process.env.ALGOLIA_INDEX) ?  process.env.ALGOLIA_INDEX : `Tracks_DEV`
+  const algoliaIndex = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOLIA_INDEX : `Tracks_DEV`
   const [sort, setSort] = useState("classNumber")
   const [descendingSort, setDescendingSort] = useState(true)
 

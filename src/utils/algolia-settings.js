@@ -5,7 +5,7 @@ exports.syncAlgoliaSettings= async function() {
   const ALGOLIA_APP_ID = process.env.GATSBY_ALGOLIA_APP_ID
   const ALGOLIA_API_KEY = process.env.ALGOLIA_ADMIN_KEY
   const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
-  const indexName = (process.env.ALGOLIA_INDEX) ?  process.env.ALGOLIA_INDEX : `Tracks_DEV`
+  const indexName = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOLIA_INDEX : `Tracks_DEV`
   const replicas = {
     CLASS_ASC: `${indexName}_classnum_asc`,
     CLASS_DSC: `${indexName}_classnum_dsc`,
