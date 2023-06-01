@@ -196,7 +196,7 @@ const ContactPage = props => {
             <button type="submit" className="bg-dark-blue text-lg text-white hover:bg-white hover:text-dark-blue font-bold py-2 px-4 w-full h-10 rounded-md">Submit</button>
             </div>
           </form>
-          {showSubmitted && submitSuccess ? <span id="submitSuccessMessage" className="text-center text-green-500 mb-3">Thank you for submitting your message!</span> : null}
+          {showSubmitted && submitSuccess ? <span id="submitSuccessMessage" className="text-center text-xl text-green-600 mb-3"><u>Thank you for submitting your message!</u></span> : null}
           {showSubmitted && !submitSuccess ? <span id="submitFailMessage" className="text-center text-red-500 mb-3">Error: Could not submit message!</span> : null}
 
         </div>
