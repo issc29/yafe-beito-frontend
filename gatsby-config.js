@@ -19,6 +19,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-source-sanity',
