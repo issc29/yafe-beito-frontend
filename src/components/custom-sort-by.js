@@ -30,7 +30,7 @@ const CustomSortBy = props => {
         select: 'hover:bg-white/50 hover:text-dark-blue bg-dark-blue text-white no-underline text-xl rounded-md w-full sm:w-auto'
       }}
         items={[
-          { label: 'Relevence', value: algoliaIndex },
+          { label: 'Relevance', value: algoliaIndex },
           { label: 'Class # (ascending)', value: algoliaIndex + '_classnum_asc' },
           { label: 'Class # (descending)', value: algoliaIndex + '_classnum_dsc'  },
           { label: 'Title (A->Z)', value: algoliaIndex + '_title_asc'  },
