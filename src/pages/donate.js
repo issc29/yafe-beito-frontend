@@ -7,6 +7,7 @@ import Layout from "../containers/layout";
 import bgImage from '../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
+import { PortableTextCustomizations } from "../components/portable-text-customizations";
 
 export const query = graphql`
 query  {
@@ -41,7 +42,7 @@ const DonatePage = props => {
       <SEO title="Donate" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
-          <div className="sm:mx-10 bg-white/75">
+          <div className="sm:mx-10 bg-white/90">
             <div className="p-4 text-justify">
               <h1 className="text-center text-dark-blue text-4xl pb-4">Help Support Yafe Be'ito's Mission</h1>
               <div className="flex justify-center">
@@ -57,7 +58,7 @@ const DonatePage = props => {
                   </button>
                 </div>
               <div className="text-lg"> 
-                <PortableText value={data.site["_rawDonate"]} components={myPortableTextComponents}/>
+                <PortableText value={data.site["_rawDonate"]} components={PortableTextCustomizations}/>
                 
                 </div>
               </div>
@@ -68,23 +69,5 @@ const DonatePage = props => {
     </Layout>
   );
 };
-
-
-const myPortableTextComponents = {
-  block: {
-    normal: ({children}) => <p className="my-2">{children}</p>,
-  },
-  marks: {
-    strong: ({children}) => <strong className="font-bold">{children}</strong>,
-  },
-  list: {
-    bullet: ({children}) => <ul className="list-disc ml-6 my-2">{children}</ul>,
-  },
-  listItem: {
-    bullet: ({children}) => <li className="">{children}</li>,
-
-  },
-}
-
 
 export default DonatePage;
