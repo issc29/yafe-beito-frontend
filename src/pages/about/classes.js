@@ -12,6 +12,7 @@ import SEO from "../../components/seo";
 import Layout from "../../containers/layout";
 import bgImage from '../../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
+import { PortableTextCustomizations } from "../../components/portable-text-customizations";
 
 export const query = graphql`
 query  {
@@ -53,10 +54,10 @@ const AboutPage = props => {
     <Layout bgImage={bgImage}>
       <SEO title="About Class Library" description={site.description} keywords={site.keywords} />
       <Container>
-        <div className="flex-col p-4 text-justify bg-white/75">
+        <div className="flex-col p-4 text-justify bg-white/90">
           <h1 className="text-center text-dark-blue text-4xl pb-4">About Class Library</h1>
           <div className="text-lg">
-            <PortableText value={data.site.aboutClasses}/>
+            <PortableText value={data.site.aboutClasses} components={PortableTextCustomizations}/>
           </div>
         </div>
 
