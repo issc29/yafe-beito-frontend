@@ -10,15 +10,15 @@ import SEO from "../components/seo";
 
 export const query = graphql`
   query NotFoundPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
       description
       keywords
     }
     projects: allSanitySampleProject(
       limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      sort: {publishedAt: DESC}
+      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
       edges {
         node {

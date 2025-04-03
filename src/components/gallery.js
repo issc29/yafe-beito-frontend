@@ -4,7 +4,6 @@ import { graphql, StaticQuery } from "gatsby";
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 require('pro-gallery/dist/statics/main.css');
-import { migrateOptions } from 'pro-gallery-lib';
 
 const query = graphql`
 query  {
@@ -77,7 +76,7 @@ export default function Gallery() {
                         mediaUrl: src
                 })
             }
-            
+
             return (
                 <ProGallery
                 items={items2}

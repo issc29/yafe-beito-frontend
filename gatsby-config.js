@@ -18,7 +18,6 @@ const indexName = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOL
 module.exports = {
   plugins: [
     'gatsby-plugin-image',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify',
     'gatsby-plugin-postcss',
     {

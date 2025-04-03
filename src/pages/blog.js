@@ -12,33 +12,32 @@ import YouTube from 'react-youtube'
 export const query = graphql`
 query  {
   projects: allSanityBlogArticles(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug {
-            current
-          }
-          body {
-            children {
+    limit: 6
+    sort: {publishedAt: DESC}
+    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+  ) {
+    edges {
+      node {
+        id
+        title
+        slug {
+          current
+        }
+        body {
+          children {
             text
             marks
             _key
             _type
-            }
-            _type
-            _key
-
           }
-          _rawBody
+          _type
+          _key
         }
+        _rawBody
       }
     }
   }
+}
 `;
 
 const serializers = {

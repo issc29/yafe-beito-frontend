@@ -13,8 +13,8 @@ export const query = graphql`
   query ArchivePageQuery {
     projects: allSanitySampleProject(
       limit: 12
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      sort: {publishedAt: DESC}
+      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
       edges {
         node {

@@ -17,50 +17,50 @@ import bgImage from '../images/contact_bg.jpg'
 
 export const query = graphql`
   query IndexPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
-    projects: allSanitySampleProject(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            alt
+  site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
+    title
+    description
+    keywords
+  }
+  projects: allSanitySampleProject(
+    limit: 6
+    sort: {publishedAt: DESC}
+    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+  ) {
+    edges {
+      node {
+        id
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
           }
-          title
-          _rawExcerpt
-          slug {
-            current
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
           }
+          asset {
+            _id
+          }
+          alt
+        }
+        title
+        _rawExcerpt
+        slug {
+          current
         }
       }
     }
   }
+}
 `;
 
 const IndexPage = props => {
