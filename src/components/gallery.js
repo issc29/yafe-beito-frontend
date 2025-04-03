@@ -4,6 +4,7 @@ import { graphql, StaticQuery } from "gatsby";
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 require('pro-gallery/dist/statics/main.css');
+import { migrateOptions } from 'pro-gallery-lib';
 
 const query = graphql`
 query  {
@@ -39,16 +40,12 @@ query  {
 
 export default function Gallery() {
 
-
-
   // The options of the gallery (from the playground current state)
   const options = {
-    galleryLayout: 4,
-    isAutoSlideshow: true,
-    autoSlideshowInterval: 5,
-    slideshowLoop: true,
-
-
+    behaviourParams_gallery_horizontal_autoSlide_behaviour: "CONTINUOUS",
+    behaviourParams_gallery_horizontal_autoSlide_interval: 5,
+    behaviourParams_gallery_horizontal_loop: true,
+    layoutParams_structure_galleryLayout: 4
   };
 
   // The size of the gallery container. The images will fit themselves in it
@@ -80,8 +77,7 @@ export default function Gallery() {
                         mediaUrl: src
                 })
             }
-
-
+            
             return (
                 <ProGallery
                 items={items2}
