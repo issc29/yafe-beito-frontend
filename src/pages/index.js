@@ -7,7 +7,7 @@ import {
 } from "../lib/helpers";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import Gallery from "../components/gallery";
 import FeaturedClasses from "../components/featured-classes";
@@ -89,7 +89,6 @@ const IndexPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title="Home" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="sm:mx-10 p-10 bg-white/60">
@@ -107,3 +106,7 @@ const IndexPage = props => {
 };
 
 export default IndexPage;
+
+export const Head = () => (
+  <SEO />
+)

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import bgImage from '../images/contact_bg.jpg'
 import { PortableText } from "@portabletext/react";
@@ -116,7 +116,6 @@ const ContactPage = props => {
 
   return (
     <Layout bgImage={bgImage} >
-      <SEO title="Contact" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex flex-col sm:mx-10 bg-white/75 ">
           <h1 className="text-center text-dark-blue text-4xl">Contact Us</h1>
@@ -206,3 +205,7 @@ const ContactPage = props => {
 };
 
 export default ContactPage;
+
+export const Head = () => (
+  <SEO />
+)

@@ -8,7 +8,7 @@ import {
 import Container from "../../components/container";
 import GraphQLErrorList from "../../components/graphql-error-list";
 import ProjectPreviewGrid from "../../components/project-preview-grid";
-import SEO from "../../components/seo";
+import { SEO } from "../../components/seo"
 import Layout from "../../containers/layout";
 import bgImage from '../../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
@@ -52,7 +52,6 @@ const AboutPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title="About Hakham Faur" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col p-4 text-justify bg-white/90">
           <h1 className="text-center text-dark-blue text-4xl pb-4">About Hakham Dr. José Faur</h1>
@@ -67,3 +66,7 @@ const AboutPage = props => {
 };
 
 export default AboutPage;
+
+export const Head = () => (
+  <SEO />
+)

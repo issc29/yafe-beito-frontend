@@ -8,7 +8,7 @@ import {
 import Container from "../../components/container";
 import GraphQLErrorList from "../../components/graphql-error-list";
 import ProjectPreviewGrid from "../../components/project-preview-grid";
-import SEO from "../../components/seo";
+import { SEO } from "../../components/seo"
 import Layout from "../../containers/layout";
 import bgImage from '../../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
@@ -52,7 +52,6 @@ const AboutYafeBeitoPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title="About Yafe Be'ito" description={site.description} keywords={site.keywords} />
       <Container>
       <div className="flex-col p-4 text-justify bg-white/90">
           <h1 className="text-center text-dark-blue text-4xl pb-4">Yafe Be'ito: Hakham Dr. José Faur Studies Foundation</h1>
@@ -66,3 +65,7 @@ const AboutYafeBeitoPage = props => {
 };
 
 export default AboutYafeBeitoPage;
+
+export const Head = () => (
+  <SEO />
+)

@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import bgImage from '../images/about_bg.jpg'
 import { PortableText } from "@portabletext/react";
@@ -73,7 +73,6 @@ const BlogPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="mx-10 bg-white/75">
@@ -95,3 +94,7 @@ const BlogPage = props => {
 };
 
 export default BlogPage;
+
+export const Head = () => (
+  <SEO />
+)
