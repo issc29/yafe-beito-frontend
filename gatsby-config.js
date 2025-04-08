@@ -18,7 +18,6 @@ const indexName = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOL
 module.exports = {
   plugins: [
     'gatsby-plugin-image',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify',
     'gatsby-plugin-postcss',
     {
@@ -38,5 +37,10 @@ module.exports = {
         queries: require("./src/utils/algolia-queries"),
       },
     }
-  ]
+  ],
+  siteMetadata: {
+    title: `Hakham Dr. José Faur Studies Foundation | Yafe Be'ito`,
+    description: `Yafe Be'ito is a foundation created to spread the Tora of Hakham Faur -   the time is Yafe-nice for his Tora to light up the world more than ever!\n\nThe word Yafe is also the acronym of Hakham Faur's name which he used this way in several places when signing his name:יוסף פאור הלוי.`,
+    siteUrl: `https://yafebeito.com/`,
+  },
 }

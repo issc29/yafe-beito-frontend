@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import bgImage from '../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
@@ -39,7 +39,6 @@ const DonatePage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title="Donate" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="sm:mx-10 bg-white/90">
@@ -71,3 +70,7 @@ const DonatePage = props => {
 };
 
 export default DonatePage;
+
+export const Head = () => (
+  <SEO />
+)

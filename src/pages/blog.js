@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import bgImage from '../images/about_bg.jpg'
 import { PortableText } from "@portabletext/react";
@@ -12,33 +12,32 @@ import YouTube from 'react-youtube'
 export const query = graphql`
 query  {
   projects: allSanityBlogArticles(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug {
-            current
-          }
-          body {
-            children {
+    limit: 6
+    sort: {publishedAt: DESC}
+    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+  ) {
+    edges {
+      node {
+        id
+        title
+        slug {
+          current
+        }
+        body {
+          children {
             text
             marks
             _key
             _type
-            }
-            _type
-            _key
-
           }
-          _rawBody
+          _type
+          _key
         }
+        _rawBody
       }
     }
   }
+}
 `;
 
 const serializers = {
@@ -74,7 +73,6 @@ const BlogPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="mx-10 bg-white/75">
@@ -96,3 +94,7 @@ const BlogPage = props => {
 };
 
 export default BlogPage;
+
+export const Head = () => (
+  <SEO />
+)

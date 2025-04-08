@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import bgImage from '../images/book_bg.png'
 import { PortableText } from "@portabletext/react";
@@ -45,7 +45,6 @@ const BookShopPage = props => {
 
   return (
     <Layout bgImage={bgImage}>
-      <SEO title="Book Shop" description={site.description} keywords={site.keywords} />
       <Container>
         <div className="flex-col">
           <div className="mx-10 bg-white/75">
@@ -64,3 +63,7 @@ const BookShopPage = props => {
 };
 
 export default BookShopPage;
+
+export const Head = () => (
+  <SEO />
+)

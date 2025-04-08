@@ -6,19 +6,19 @@ import {
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
 import Layout from "../containers/layout";
-import SEO from "../components/seo";
+import { SEO } from "../components/seo"
 
 export const query = graphql`
   query NotFoundPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
       description
       keywords
     }
     projects: allSanitySampleProject(
       limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      sort: {publishedAt: DESC}
+      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
     ) {
       edges {
         node {
@@ -82,7 +82,6 @@ const NotFoundPage = props => {
   }
   return(
     <Layout>
-      <SEO title="404: Not found" />
       <h1>NOT FOUND</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
     </Layout>
@@ -90,3 +89,7 @@ const NotFoundPage = props => {
   }
 
 export default NotFoundPage;
+
+export const Head = () => (
+  <SEO />
+)
