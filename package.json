@@ -4,7 +4,7 @@
   "version": "1.0.3",
   "author": "Isaac Cohen",
   "engines": {
-    "node": "^18.18.0"
+    "node": "^22.14.0"
   },
   "scripts": {
     "build": "gatsby build",
@@ -51,7 +51,6 @@
     "autoprefixer": "^10.4.2",
     "dotenv": "^15.0.0",
     "eslint": "^8.0.0",
-    "eslint-config-react-app": "^7.0.1",
     "postcss": "^8.4.8",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^7.3.0",
