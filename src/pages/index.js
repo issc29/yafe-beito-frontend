@@ -94,7 +94,7 @@ const IndexPage = props => {
           <div className="sm:mx-10 p-10 bg-white/60">
             <h1 hidden>Welcome to {site.title}</h1>
             <img src={siteNameIllustration} className="block w-80 place-content-center m-auto" />
-            <h2 className="text-center text-3xl text-white">Hakham Dr. José Faur Studies </h2>
+            <h2 className="text-center text-3xl text-black">Hakham Dr. José Faur Studies </h2>
         <Gallery />
         <FeaturedClasses />
         <FeaturedNews />

@@ -1,19 +1,24 @@
 import React from "react"
 import { useSiteMetadata } from "../hooks/use-site-metadata"
+import { imageUrlFor } from "../lib/image-url";
+import { buildImageObj } from "../lib/helpers";
+import favicon from '../images/favicon.ico'
 
 export const SEO = ({ title, description, pathname, children }) => {
-  const { title: defaultTitle, description: defaultDescription } = useSiteMetadata()
+  const { title: defaultTitle, description: defaultDescription, logo } = useSiteMetadata()
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
+    logo: imageUrlFor(buildImageObj(logo))
   }
 
   return (
     <>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
-      <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👤</text></svg>" />
+      <meta name="image" content={seo.logo} />
+      <link rel="icon" type="image/x-icon" href={favicon}/>
       {children}
     </>
   )
