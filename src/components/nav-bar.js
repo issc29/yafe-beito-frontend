@@ -1,9 +1,7 @@
-/* This example requires Tailwind CSS v2.0+ */
 import React from "react";
-import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, navigate } from "gatsby";
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure, } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 import Dropdown from "./dropdown";

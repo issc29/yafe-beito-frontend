@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import 'react-h5-audio-player/lib/styles.css';
 import ClassContainer from "../components/ClassContainer";
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, CurrentRefinements, HierarchicalMenu, Pagination } from 'react-instantsearch-hooks-web';
-import DropdownSort from "../components/dropdown-sort";
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/24/solid'
 import CustomSortBy from "./custom-sort-by";

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import 'react-h5-audio-player/lib/styles.css';
-import DropdownSort from "./dropdown-sort";
 import { useInstantSearch, SortBy } from 'react-instantsearch-hooks-web';
 
 

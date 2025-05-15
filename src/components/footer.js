@@ -1,8 +1,4 @@
-import { Link } from "gatsby";
 import React from "react";
-import fbIcon from '../images/fb.png'
-import igIcon from '../images/ig.png'
-import ytIcon from '../images/yt.png'
 import { FaWhatsapp } from "@react-icons/all-files/fa/FaWhatsapp";
 import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
 import { FaYoutube } from "@react-icons/all-files/fa/FaYoutube";

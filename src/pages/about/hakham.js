@@ -7,7 +7,6 @@ import {
 } from "../../lib/helpers";
 import Container from "../../components/container";
 import GraphQLErrorList from "../../components/graphql-error-list";
-import ProjectPreviewGrid from "../../components/project-preview-grid";
 import { SEO } from "../../components/seo"
 import Layout from "../../containers/layout";
 import bgImage from '../../images/donate_bg.jpg'
