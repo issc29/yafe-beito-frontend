@@ -1,4 +1,4 @@
-import { graphql, StaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import React, { useState } from "react";
 import Layout from "../components/layout";
 
@@ -41,26 +41,22 @@ function LayoutContainer(props) {
     setShowNav(false);
   }
   
+  const data = useStaticQuery(query);
+  
+  if (!data.site) {
+    throw new Error(
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
+    );
+  }
+  
   return (
-    <StaticQuery
-      query={query}
-      render={data => {
-        if (!data.site) {
-          throw new Error(
-            'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
-          );
-        }
-        return (  
-          <Layout
-            {...props}
-            showNav={showNav}
-            siteTitle={data.site.title}
-            logo={data.site.logo}
-            onHideNav={handleHideNav}
-            onShowNav={handleShowNav}
-          />
-        );
-      }}
+    <Layout
+      {...props}
+      showNav={showNav}
+      siteTitle={data.site.title}
+      logo={data.site.logo}
+      onHideNav={handleHideNav}
+      onShowNav={handleShowNav}
     />
   );
 }

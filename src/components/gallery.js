@@ -1,6 +1,6 @@
 import { ProGallery } from 'pro-gallery';
 import React from 'react';
-import { graphql, StaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 require('pro-gallery/dist/statics/main.css');
@@ -58,34 +58,31 @@ export default function Gallery() {
 
   // The scrollingElement is usually the window, if you are scrolling inside another element, suplly it here
   //const scrollingElement = window;
-  return (
-        <StaticQuery
-          query={query}
-          render={data => {
-            if (!data.site) {
-              throw new Error(
-                'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
-              );
-            }
-            var items2 = [];
-            for(var image of data.site.gallery.images) {
-                    const src = imageUrlFor(buildImageObj(image)).url()
-                    const id = image.asset["_id"]
-                items2.push({
-                        itemId: id,
-                        mediaUrl: src
-                })
-            }
 
-            return (
-                <ProGallery
-                items={items2}
-                options={options}
-                container={container}
-                //eventsListener={eventsListener}
-              />
-            );
-          }}
-        />
-      );
+  const data = useStaticQuery(query);
+  
+  if (!data.site) {
+    throw new Error(
+      'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
+    );
+  }
+  
+  var items2 = [];
+  for(var image of data.site.gallery.images) {
+    const src = imageUrlFor(buildImageObj(image)).url()
+    const id = image.asset["_id"]
+    items2.push({
+      itemId: id,
+      mediaUrl: src
+    })
+  }
+
+  return (
+    <ProGallery
+      items={items2}
+      options={options}
+      container={container}
+      //eventsListener={eventsListener}
+    />
+  );
 }
