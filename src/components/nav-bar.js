@@ -3,7 +3,7 @@ import React from "react";
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, navigate } from "gatsby";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 import Dropdown from "./dropdown";
@@ -40,9 +40,9 @@ export default function NavBar({logo}) {
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-dark-blue hover:text-white hover:bg-dark-blue focus:outline-none ring-2 ring-inset  ring-dark-blue">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -114,7 +114,7 @@ export default function NavBar({logo}) {
                         'block px-3 py-2 rounded-md text-base font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
-                    >
+                  >
                       {name}
                   </Disclosure.Button>
                   )

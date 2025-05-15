@@ -6,7 +6,7 @@ import { SEO } from "../components/seo"
 import Layout from "../containers/layout";
 import bgImage from '../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
-import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import { PortableTextCustomizations } from "../components/portable-text-customizations";
 
 export const query = graphql`
@@ -53,7 +53,7 @@ const DonatePage = props => {
                       window.open(data.site.donateLink, "_blank");
                     }}
                   >
-                  <span className="inline">Donate <ArrowNarrowRightIcon className="inline h-6 w-6" /></span> 
+                  <span className="inline">Donate <ArrowLongRightIcon className="inline h-6 w-6" /></span> 
                   </button>
                 </div>
               <div className="text-lg"> 

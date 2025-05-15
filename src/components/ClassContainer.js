@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PlayIcon, ShareIcon } from "@heroicons/react/outline";
+import { PlayCircleIcon, ShareIcon } from '@heroicons/react/24/outline';
 import 'react-h5-audio-player/lib/styles.css';
 import { useInstantSearch } from 'react-instantsearch-hooks-web';
 import CopiedModal from "./copied-modal";
@@ -28,13 +28,13 @@ const ClassContainer = props => {
   return (
     <div className="flex bg-dark-blue text-white my-4 py-2 rounded-md">
       <div className="flex-none w-20" title="Play">
-        <PlayIcon 
+        <PlayCircleIcon 
           className="h-20 w-20 text-white hover:text-gray-400" 
           onClick={() => {
             props.setPlay(true)
             props.setAudioSrc(hitData)
             }} >
-        </PlayIcon>
+        </PlayCircleIcon>
       </div>
       <div className="flex-1 flex">
         <div className="grow flex flex-col ">

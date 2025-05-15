@@ -1,6 +1,6 @@
-import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useEffect, useRef, useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { Menu, Transition, MenuButton, MenuItems, MenuItem } from '@headlessui/react'
+import { Fragment } from 'react'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 import { Link } from 'gatsby'
 
@@ -9,13 +9,13 @@ export default function Dropdown({name, options}) {
     <div>
       <Menu as="div" className="relative inline-block text-left">
         <div className="hover:bg-white/50 hover:text-dark-blue bg-dark-blue text-white no-underline text-xl rounded-md" >
-          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 rounded-md">
+          <MenuButton className="inline-flex justify-center w-full px-4 py-2 rounded-md">
             {name}
             <ChevronDownIcon
               className="w-5 h-5 ml-2 -mr-1 my-auto "
               aria-hidden="true"
             />
-          </Menu.Button>
+          </MenuButton>
         </div>
         <Transition
           as={Fragment}
@@ -26,20 +26,24 @@ export default function Dropdown({name, options}) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <MenuItems className="absolute right-0 w-56 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {options.map((option) => (
-                <Menu.Item key={option.link}>
-                {({ active }) => (
-                  <Link to={option.link} className={`${
-                    active ? 'bg-dark-blue text-white' : 'text-dark-blue'
-                  } group flex rounded-md items-center w-full px-2 py-2 text-lg`}>{option.name}</Link>
-                )}
-              </Menu.Item>
-              ))
-              }
+                <MenuItem key={option.link}>
+                  {({ focus }) => (
+                    <Link
+                      to={option.link}
+                      className={`${
+                        focus ? 'bg-dark-blue text-white' : 'text-dark-blue'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-lg`}
+                    >
+                      {option.name}
+                    </Link>
+                  )}
+                </MenuItem>
+              ))}
             </div>
-          </Menu.Items>
+          </MenuItems>
         </Transition>
       </Menu>
     </div>

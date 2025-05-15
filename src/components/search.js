@@ -5,7 +5,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, CurrentRefinements, HierarchicalMenu, Pagination } from 'react-instantsearch-hooks-web';
 import DropdownSort from "../components/dropdown-sort";
 import { Disclosure } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/solid'
+import { ChevronUpIcon } from '@heroicons/react/24/solid'
 import CustomSortBy from "./custom-sort-by";
 import { isMobile } from 'react-device-detect';
 import { sortHierarchicalMenu } from "../lib/helpers";

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import 'react-h5-audio-player/lib/styles.css';
-import { PlayIcon, PauseIcon } from "@heroicons/react/solid";
 import ReactPlayer from 'react-player'
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import { MdForward10 } from "@react-icons/all-files/md/MdForward10";
