@@ -1,30 +1,15 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import BlockContent from "./block-content";
-
-const query = graphql`
-query  {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      _rawLatestNews
-      displayLatestNews
-    }	
-  }
-`;
+import { useFeaturedNews } from "../hooks/use-featured-news";
 
 export default function FeaturedNews() {
-  const data = useStaticQuery(query);
-  
-  if (!data.site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
-    );
-  }
+  const site = useFeaturedNews();
 
   return (
-    <div className={`text-center text-dark-blue  ${(data.site["displayLatestNews"]) ? '': 'hidden'}`}>
-     <hr className="border-2 border-dark-blue mx-auto w-1/2 mb-4" />
+    <div className={`text-center text-dark-blue  ${(site["displayLatestNews"]) ? '': 'hidden'}`}>
+      <hr className="border-2 border-dark-blue mx-auto w-1/2 mb-4" />
       <div className="text-center text-5xl">Latest News</div>
-      <BlockContent blocks={data.site["_rawLatestNews"]} />
+      <BlockContent blocks={site["_rawLatestNews"]} />
     </div>
   );
 }

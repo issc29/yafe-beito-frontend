@@ -1,41 +1,9 @@
 import { ProGallery } from 'pro-gallery';
 import React from 'react';
-import { graphql, useStaticQuery } from "gatsby";
+import { useGallery } from "../hooks/use-gallery";
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
 require('pro-gallery/dist/statics/main.css');
-
-const query = graphql`
-query  {
-        site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-         gallery {
-            images {
-              crop {
-                _key
-                _type
-                bottom
-                left
-                right
-                top
-              }
-              hotspot {
-                _key
-                _type
-                height
-                x
-                y
-                width
-              }
-              asset {
-                _id
-                altText
-              }
-              alt
-            }
-          }
-              }	
-      }
-`;
 
 export default function Gallery() {
 
@@ -59,16 +27,10 @@ export default function Gallery() {
   // The scrollingElement is usually the window, if you are scrolling inside another element, suplly it here
   //const scrollingElement = window;
 
-  const data = useStaticQuery(query);
-  
-  if (!data.site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
-    );
-  }
-  
+  const gallery = useGallery();
+
   var items2 = [];
-  for(var image of data.site.gallery.images) {
+  for(var image of gallery.images) {
     const src = imageUrlFor(buildImageObj(image)).url()
     const id = image.asset["_id"]
     items2.push({

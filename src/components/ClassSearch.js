@@ -9,10 +9,7 @@ import CustomSortBy from "./custom-sort-by";
 import { isMobile } from 'react-device-detect';
 import { sortHierarchicalMenu } from "../lib/helpers";
 
-
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
-
-
 
 const ClassSearch = props => {
   const algoliaIndex = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOLIA_INDEX : `Tracks_DEV`
