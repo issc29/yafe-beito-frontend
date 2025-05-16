@@ -1,6 +1,6 @@
 import { format, isFuture } from "date-fns";
 
-export function cn(...args) {
+export function concatClassNames(...args) {
   return args.filter(Boolean).join(" ");
 }
 
