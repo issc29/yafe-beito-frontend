@@ -2,7 +2,7 @@
 import React from "react";
 import NavBar from "./nav-bar";
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, logo }) => (
+const Header = ({ logo }) => (
   <div>
    <NavBar logo={logo}/>
   </div>

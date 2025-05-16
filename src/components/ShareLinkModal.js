@@ -1,7 +1,7 @@
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import React, { Fragment } from 'react'
 
-const CopiedModal = props => {
+const ShareLinkModal = props => {
 
   return (
     <>
@@ -46,4 +46,4 @@ const CopiedModal = props => {
   )
 }
 
-export default CopiedModal;
+export default ShareLinkModal;

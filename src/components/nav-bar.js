@@ -4,7 +4,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, } from '@headlessui/reac
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { imageUrlFor } from "../lib/image-url";
 import { buildImageObj } from "../lib/helpers";
-import Dropdown from "./dropdown";
+import NavigationDropdown from "./NavigationDropdown";
 
 const aboutLinks = [
   {"name":"The Hakham", "link":"/about/hakham"},
@@ -75,7 +75,7 @@ export default function NavBar({logo}) {
 
                       (item.type == "dropdown") 
                       ?
-                      <Dropdown name={item.name} options={item.options} key={item.name}/>
+                      <NavigationDropdown name={item.name} options={item.options} key={item.name}/>
                       : 
                       <div className="w-28" key={item.href}>
                         <Link to={item.href} className={classNames(

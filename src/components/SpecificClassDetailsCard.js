@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { PlayCircleIcon, ShareIcon } from '@heroicons/react/24/outline';
 import 'react-h5-audio-player/lib/styles.css';
 import { useInstantSearch } from 'react-instantsearch-hooks-web';
-import CopiedModal from "./copied-modal";
+import ShareLinkModal from "./ShareLinkModal";
 
 
-const ClassContainer = props => {
+const SpecificClassDetailsCard = props => {
  
   const hitData = (props.hit || {})
   const tags = (hitData._tags || [])
@@ -58,7 +58,7 @@ const ClassContainer = props => {
                 }} >
             </ShareIcon>
           </div>
-        <CopiedModal isOpen={isOpen} closeModal={closeCopiedModal}/>
+        <ShareLinkModal isOpen={isOpen} closeModal={closeCopiedModal}/>
       </div>
 
 
@@ -101,4 +101,4 @@ function getMostSpecificCategory(category){
   return categoryArray[categoryArray.length - 1]
 }
 
-export default ClassContainer;
+export default SpecificClassDetailsCard;

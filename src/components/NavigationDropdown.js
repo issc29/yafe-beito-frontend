@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { Link } from 'gatsby'
 
-export default function Dropdown({name, options}) {
+export default function NavigationDropdown({name, options}) {
   return (
     <div>
       <Menu as="div" className="relative inline-block text-left">

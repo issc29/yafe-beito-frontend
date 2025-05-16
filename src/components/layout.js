@@ -4,11 +4,11 @@ import Footer from "./footer";
 import { CookiesProvider } from "react-cookie";
 
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, logo, bgImage, hideFooter, bgResizable, bgFixed }) => (
+const Layout = ({ children, logo, bgImage, hideFooter, bgResizable, bgFixed }) => (
   <CookiesProvider>
     <div className={`${(bgResizable) ? "bg-[length:100%_100%] bg-fixed" : "bg-cover"} ${(bgFixed) ? "bg-fixed" : ""} bg-top bg-no-repeat min-h-screen relative`} style={{backgroundImage:`url(${bgImage})`}}>
       <div className="pb-28">
-        <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} logo={logo}/>
+        <Header logo={logo}/>
         <div >{children}</div>
       </div>
       {(hideFooter) ? <></> : <Footer />}

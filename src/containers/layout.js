@@ -33,14 +33,6 @@ const query = graphql`
 `;
 
 function LayoutContainer(props) {
-  const [showNav, setShowNav] = useState(false);
-  function handleShowNav() {
-    setShowNav(true);
-  }
-  function handleHideNav() {
-    setShowNav(false);
-  }
-  
   const data = useStaticQuery(query);
   
   if (!data.site) {
@@ -52,11 +44,7 @@ function LayoutContainer(props) {
   return (
     <Layout
       {...props}
-      showNav={showNav}
-      siteTitle={data.site.title}
       logo={data.site.logo}
-      onHideNav={handleHideNav}
-      onShowNav={handleShowNav}
     />
   );
 }

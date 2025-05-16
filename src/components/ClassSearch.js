@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import 'react-h5-audio-player/lib/styles.css';
-import ClassContainer from "../components/ClassContainer";
+import SpecificClassDetailsCard from "./SpecificClassDetailsCard";
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, CurrentRefinements, HierarchicalMenu, Pagination } from 'react-instantsearch-hooks-web';
 import { Disclosure } from '@headlessui/react'
@@ -14,7 +14,7 @@ const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.en
 
 
 
-const Search = props => {
+const ClassSearch = props => {
   const algoliaIndex = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOLIA_INDEX : `Tracks_DEV`
   const [sort, setSort] = useState("classNumber")
   const [descendingSort, setDescendingSort] = useState(true)
@@ -105,7 +105,7 @@ const Search = props => {
           <div>
             <div className="flex">
               <Hits 
-                hitComponent={ ({ hit }) => <ClassContainer hit={hit} setAudioSrc={props.setAudioSrc} algoliaIndex={algoliaIndex} setPlay={props.setPlay}/>} 
+                hitComponent={ ({ hit }) => <SpecificClassDetailsCard hit={hit} setAudioSrc={props.setAudioSrc} algoliaIndex={algoliaIndex} setPlay={props.setPlay}/>} 
                 classNames={{root:'flex-auto'}} 
               />
             </div>
@@ -126,4 +126,4 @@ const Search = props => {
   )
 }
 
-export default Search;
+export default ClassSearch;

@@ -4,8 +4,6 @@ import { FaFacebook } from "@react-icons/all-files/fa/FaFacebook";
 import { FaYoutube } from "@react-icons/all-files/fa/FaYoutube";
 import { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 
-import * as styles from "./layout.module.css";
-
 const Footer = () => (
   <footer className="bg-dark-blue text-white py-4 absolute bottom-0 inset-x-0 ">
       <div >
@@ -23,7 +21,7 @@ const Footer = () => (
             <FaInstagram className="mx-2" size="3em"/>
           </a>
         </div>
-        <div className={styles.siteInfo}>
+        <div className="text-center text-sm">
           © {new Date().getFullYear()} by Yafe Beito: Hakham Dr. José Faur Studies Foundation
           <br/>Site built with <a href="https://www.sanity.io">Sanity</a> &amp;
           {` `}

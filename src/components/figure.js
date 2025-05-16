@@ -3,8 +3,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { getGatsbyImageData } from "gatsby-source-sanity";
 import clientConfig from "../../client-config";
 
-import * as styles from "./figure.module.css";
-
 export function Figure({value}) {
   //console.log(value)
   if (!value.asset) {
@@ -14,7 +12,7 @@ export function Figure({value}) {
   const imageData = getGatsbyImageData(value.asset, { maxWidth: 675 }, clientConfig.sanity);
 
   return (
-    <figure className={styles.root}>
+    <figure className="my-8">
       <GatsbyImage image={imageData} alt={value.alt} />
       {value.caption && <figcaption>{value.caption}</figcaption>}
     </figure>

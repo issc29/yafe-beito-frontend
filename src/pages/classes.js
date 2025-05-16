@@ -7,7 +7,7 @@ import bgImage from '../images/contact_bg.jpg'
 import 'react-h5-audio-player/lib/styles.css';
 import AudioPlayerCustom from "./audioPlayerCustom";
 import { useCookies } from 'react-cookie';
-import Search from "../components/search";
+import ClassSearch from "../components/ClassSearch";
 
 
 export const query = graphql`
@@ -91,7 +91,7 @@ const ClassesPage = props => {
         <div className="flex-col">
           <div className="sm:mx-10 p-3 bg-white/75">
             <h1 className="text-center text-dark-blue text-4xl">Class Library</h1>
-            <Search setAudioSrc={setAudioSrc} setPlay={setPlay} />
+            <ClassSearch setAudioSrc={setAudioSrc} setPlay={setPlay} />
             <AudioPlayerCustom Track={audioSrc} setAudioTime={setAudioTime} play={play} setPlay={setPlay}/>
           </div>
         </div>
