@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import { SEO } from "../components/seo"
-import Layout from "../containers/layout";
+import Layout from "../components/layout";
 import bgImage from '../images/donate_bg.jpg'
 import { PortableText } from "@portabletext/react";
 import { ArrowLongRightIcon } from '@heroicons/react/24/solid';

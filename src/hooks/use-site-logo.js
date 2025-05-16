@@ -1,6 +1,4 @@
 import { graphql, useStaticQuery } from "gatsby";
-import React, { useState } from "react";
-import Layout from "../components/layout";
 
 const query = graphql`
   query SiteTitleQuery {
@@ -32,21 +30,12 @@ const query = graphql`
   }
 `;
 
-function LayoutContainer(props) {
+export default function useSiteLogo() {
   const data = useStaticQuery(query);
-  
   if (!data.site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
     );
   }
-  
-  return (
-    <Layout
-      {...props}
-      logo={data.site.logo}
-    />
-  );
-}
-
-export default LayoutContainer;
+  return data.site.logo;
+} 

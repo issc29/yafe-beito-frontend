@@ -5,7 +5,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
-import Layout from "../containers/layout";
+import Layout from "../components/layout";
 import { SEO } from "../components/seo"
 
 export const query = graphql`

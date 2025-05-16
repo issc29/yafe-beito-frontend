@@ -8,7 +8,7 @@ import {
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import { SEO } from "../components/seo"
-import Layout from "../containers/layout";
+import Layout from "../components/layout";
 import Gallery from "../components/gallery";
 import FeaturedClasses from "../components/featured-classes";
 import FeaturedNews from "../components/featured-news";
