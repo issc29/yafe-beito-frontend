@@ -5,7 +5,7 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import bgImage from '../images/contact_bg.jpg'
 import 'react-h5-audio-player/lib/styles.css';
-import AudioPlayerCustom from "./audioPlayerCustom";
+import AudioPlayerCustom from "../components/audioPlayerCustom";
 import { useCookies } from 'react-cookie';
 import ClassSearch from "../components/ClassSearch";
 
