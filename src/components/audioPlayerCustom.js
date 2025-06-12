@@ -10,11 +10,14 @@ const AudioPlayerCustom = (props) => {
   const trackId = props.Track.id || ""
 
   useEffect(() => {
-    if(props.play) {
+    // Only attempt to play when the caller requested it (`play` is true)
+    // and we have a valid audio element reference. We also depend on
+    // `trackId` so the effect re-evaluates when a new track is loaded.
+    if (props.play && player.current?.audio?.current) {
       player.current.audio.current.play()
       props.setPlay(false)
      }
-  }, [props.Track])
+  }, [trackId, props.play])
 
   return (
     <>
