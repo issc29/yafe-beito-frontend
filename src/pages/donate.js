@@ -49,7 +49,6 @@ const DonatePage = props => {
                     className="bg-dark-blue text-lg text-white hover:bg-white hover:text-dark-blue font-bold py-5 sm:py-2 px-4 w-full sm:w-3/4 h-auto sm:h-16 rounded-md my-4"
                     key="Donate"
                     onClick={() => {
-                      console.log(data.site["_rawDonate"])
                       window.open(data.site.donateLink, "_blank");
                     }}
                   >
