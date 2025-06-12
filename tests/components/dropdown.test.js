@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import Dropdown from '../../src/components/dropdown';
+import Dropdown from '../../src/components/NavigationDropdown';
 
 // Mock the Link component from Gatsby
 jest.mock('gatsby', () => ({
