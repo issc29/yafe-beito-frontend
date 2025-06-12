@@ -22,7 +22,7 @@ export default function Gallery() {
   };
 
   // The eventsListener will notify you anytime something has happened in the gallery.
-  const eventsListener = (eventName, eventData) => console.log({eventName, eventData}); 
+  const eventsListener = (eventName, eventData) => {};
 
   // The scrollingElement is usually the window, if you are scrolling inside another element, suplly it here
   //const scrollingElement = window;

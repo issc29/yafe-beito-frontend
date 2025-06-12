@@ -60,8 +60,10 @@ const ClassesPage = props => {
 
   useEffect(() => {
     setCookie('time',Math.floor(audioTime))
-    var modifiedAudioSrc = JSON.parse(JSON.stringify(audioSrc))
-    modifiedAudioSrc.linkWithTime = modifiedAudioSrc.link + "#t=" + audioTime
+    var modifiedAudioSrc = {
+      ...audioSrc,
+      linkWithTime: audioSrc.link + "#t=" + audioTime
+    }
     setCookie('audioData', modifiedAudioSrc)
   }, [audioTime])
 
