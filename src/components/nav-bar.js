@@ -15,6 +15,7 @@ const navigation = [
   { type: 'link', name: 'Home', current: false, href: '/'},
   { type: 'dropdown', name: 'About', current: false, options: aboutLinks},
   { type: 'link', name: 'Classes', current: false, href: '/classes'},
+  { type: 'link', name: 'Blog', current: false, href: '/blog'},
   { type: 'link', name: 'Donate', current: false, href: '/donate'},
   { type: 'link', name: 'Contact', current: false, href: '/contact'},
 ];
