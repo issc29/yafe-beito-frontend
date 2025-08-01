@@ -11,11 +11,36 @@ import { sortHierarchicalMenu } from "../lib/helpers";
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY);
 
+/**
+ * ClassSearch Component
+ * 
+ * Main search interface for audio classes using Algolia InstantSearch.
+ * Provides real-time search, hierarchical category filtering, and pagination
+ * for the audio class library.
+ * 
+ * Features:
+ * - Real-time search across audio track titles, artists, and metadata
+ * - Hierarchical category navigation (level0-level3: Tora > Ketubim > etc.)
+ * - Responsive design with mobile-optimized category disclosure
+ * - Custom sorting options (class number, date, etc.)
+ * - Pagination with mobile-responsive controls
+ * - Integration with custom audio player via callback props
+ * 
+ * @param {Object} props - Component props
+ * @param {Function} props.setAudioSrc - Callback to set the current audio track for playback
+ * @param {Function} props.setPlay - Callback to trigger audio playback
+ * 
+ * @returns {JSX.Element} The search interface component
+ */
 const ClassSearch = props => {
   const algoliaIndex = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOLIA_INDEX : `Tracks_DEV`
   const [sort, setSort] = useState("classNumber")
   const [descendingSort, setDescendingSort] = useState(true)
 
+  /**
+   * Handles sort order toggle between ascending and descending
+   * @param {Event} e - Click event
+   */
   function handleClickSortOrder(e){
     e.preventDefault();
     setDescendingSort(!descendingSort)

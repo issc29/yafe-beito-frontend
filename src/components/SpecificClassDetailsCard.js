@@ -4,7 +4,36 @@ import 'react-h5-audio-player/lib/styles.css';
 import { useInstantSearch } from 'react-instantsearch-hooks-web';
 import ShareLinkModal from "./ShareLinkModal";
 
-
+/**
+ * SpecificClassDetailsCard Component
+ * 
+ * Individual audio class display card component that shows class metadata,
+ * provides playback controls, category filtering, and sharing functionality.
+ * Used within search results to display each audio track.
+ * 
+ * Features:
+ * - Play button integration with custom audio player
+ * - Class metadata display (tape number, title, artist, date)
+ * - Dynamic category buttons for hierarchical filtering
+ * - Share functionality with URL generation and clipboard copy
+ * - Modal feedback for successful link copying
+ * - Integration with Algolia InstantSearch for category filtering
+ * 
+ * @param {Object} props - Component props
+ * @param {Object} props.hit - Algolia search result object containing class data
+ * @param {string} props.hit.tapeNumber - Physical tape identifier for sorting
+ * @param {string} props.hit.title - Class title
+ * @param {string} props.hit.artist - Speaker/teacher name
+ * @param {string} props.hit.dateGiven - Date when the class was recorded
+ * @param {string} props.hit.tapeID - Unique identifier for search linking
+ * @param {Object} props.hit.categories - Hierarchical category structure (level0-level3)
+ * @param {Array} props.hit._tags - Array of associated tags
+ * @param {Function} props.setAudioSrc - Callback to set current audio track for playback
+ * @param {Function} props.setPlay - Callback to trigger audio playback
+ * @param {string} props.algoliaIndex - Current Algolia index name for URL generation
+ * 
+ * @returns {JSX.Element} The class details card component
+ */
 const SpecificClassDetailsCard = props => {
  
   const hitData = (props.hit || {})
@@ -14,10 +43,16 @@ const SpecificClassDetailsCard = props => {
 
   let [isOpen, setIsOpen] = useState(false)
 
+  /**
+   * Closes the share link copied modal
+   */
   function closeCopiedModal() {
     setIsOpen(false)
   }
 
+  /**
+   * Opens the share link copied modal and auto-closes after 1.5 seconds
+   */
   function openCopiedModal() {
     setIsOpen(true)
     setTimeout(() => {
@@ -66,6 +101,14 @@ const SpecificClassDetailsCard = props => {
   );
 };
 
+/**
+ * Generates clickable category buttons for hierarchical filtering
+ * Creates buttons for each category level that update the search state
+ * when clicked to filter results by that category.
+ * 
+ * @param {Object} categoriesHierarchy - Category structure with level0-level3 arrays
+ * @returns {Array} Array of React button elements for each category
+ */
 function generateCategoryButtons(categoriesHierarchy){
   const { indexUiState, setIndexUiState } = useInstantSearch();
   const levels = ["level0", "level1", "level2", "level3"]
@@ -92,10 +135,20 @@ return buttons
   
 }
 
+/**
+ * Parses category hierarchy string into array for Algolia filtering
+ * @param {string} category - Category string with ' > ' separators
+ * @returns {Array} Array of category levels for hierarchical filtering
+ */
 function getCategoryHierarchy(category){
   return category.split(' > ')
 }
 
+/**
+ * Extracts the most specific (deepest) category from hierarchy string
+ * @param {string} category - Category string with ' > ' separators  
+ * @returns {string} The most specific category name
+ */
 function getMostSpecificCategory(category){
   const categoryArray = category.split(' > ')
   return categoryArray[categoryArray.length - 1]

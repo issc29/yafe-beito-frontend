@@ -1,3 +1,16 @@
+/**
+ * Gatsby Configuration
+ * 
+ * Main configuration file for the Yafe Be'ito frontend application.
+ * Configures plugins for Sanity CMS integration, Algolia search, and deployment.
+ * 
+ * Environment Variables Required:
+ * - SANITY_READ_TOKEN: Token for accessing Sanity CMS content
+ * - GATSBY_ALGOLIA_APP_ID: Algolia application ID
+ * - ALGOLIA_ADMIN_KEY: Algolia admin API key for indexing
+ * - GATSBY_ALGOLIA_INDEX: Search index name (defaults to 'Tracks_DEV')
+ */
+
 // Load variables from `.env` as soon as possible
 if (process.env.CI) {
   require("dotenv").config({
@@ -18,23 +31,27 @@ const indexName = (process.env.GATSBY_ALGOLIA_INDEX) ?  process.env.GATSBY_ALGOL
 module.exports = {
   plugins: [
     'gatsby-plugin-image',
+    
     'gatsby-plugin-netlify',
+    
     'gatsby-plugin-postcss',
+    
     {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
         token,
-        watchMode: !isProd,
-        overlayDrafts: !isProd && token
+        watchMode: !isProd, // Enable real-time updates in development
+        overlayDrafts: !isProd && token // Show draft content in development
       }
     },
+    
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        queries: require("./src/utils/algolia-queries"),
+        queries: require("./src/utils/algolia-queries"), // Search index configuration
       },
     }
   ],

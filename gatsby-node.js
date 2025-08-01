@@ -1,13 +1,23 @@
 
-
-const {isFuture,parseISO} = require('date-fns')
-const { syncAlgoliaSettings } = require('./src/utils/algolia-settings')
 /**
- * Implement Gatsby's Node APIs in this file.
- *
+ * Gatsby Node APIs Implementation
+ * 
+ * This file implements Gatsby's Node APIs to customize the build process.
+ * Key functionality includes:
+ * - Custom GraphQL schema extensions for audio track categorization
+ * - Custom resolvers for hierarchical tag relationships
+ * - Algolia search index synchronization during build
+ * 
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const {isFuture,parseISO} = require('date-fns')
+const { syncAlgoliaSettings } = require('./src/utils/algolia-settings')
+
+/**
+ * Gatsby Node API: onCreateNode
+ * Called when a new node is created. Adds custom fields to nodes.
+ */
 exports.onCreateNode = ({ node, actions }) => {
   const { createNode, createNodeField } = actions
   createNodeField({ node, name: `happiness`, value: `is sweet graphql queries` })
@@ -36,6 +46,12 @@ exports.createResolvers = ({ createResolvers }) => {
 
 */
 
+/**
+ * Gatsby Node API: createSchemaCustomization
+ * Defines custom GraphQL schema types for hierarchical categories.
+ * The Category type represents the hierarchical structure used for
+ * organizing audio classes (e.g., Tora > Ketubim > specific books).
+ */
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
@@ -49,17 +65,26 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs)
 }
 
+/**
+ * Gatsby Node API: createResolvers
+ * Creates custom GraphQL resolvers for complex data relationships.
+ * 
+ * This implementation adds two custom fields to SanityAudioTracks:
+ * 1. allTags - Flattens hierarchical tag relationships into a single array
+ * 2. tagsByCategory - Organizes tags into hierarchical levels for Algolia indexing
+ */
 exports.createResolvers = ({createResolvers}) => {
   createResolvers({
-    // `SanityBlogPost` being the type name you want to extend
     SanityAudioTracks: {
-      // `happiness` being the field name you want to add
       allTags: {
-        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
         type: '[SanityTag]',
         resolve: async(source, args, context, info) => {
         
-          // Recursively find all parent tags
+          /**
+           * Recursively traverses tag hierarchy to collect all parent tags
+           * @param {string} ref - Reference ID to a tag node
+           * @returns {Array} Array of tag objects with name and id
+           */
           const mapParentTags = (ref) => {
             var tags = []
             const tagNode = context.nodeModel.getNodeById({id: ref })
@@ -70,15 +95,12 @@ exports.createResolvers = ({createResolvers}) => {
             return tags
           }
           
-          // For all tags find parent tags
           const ref = source.tags[0]._ref
           var tags = []
           for (const tag of source.tags) {
             tags.push(...mapParentTags(tag._ref))
           }
 
-          
-          // Filter out any duplicates
           const uniqueIds = [];
           const uniqueTags = tags.filter(element => {
             const isDuplicate = uniqueIds.includes(element.id);
@@ -98,16 +120,16 @@ exports.createResolvers = ({createResolvers}) => {
   })
 
   createResolvers({
-    // `SanityBlogPost` being the type name you want to extend
     SanityAudioTracks: {
-      // `happiness` being the field name you want to add
       tagsByCategory: {
-        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
         type: 'Category',
         resolve: async(source, args, context, info) => {
         
-          
-          // Recursively find all parent tags
+          /**
+           * Recursively collects parent tag names in hierarchy
+           * @param {string} ref - Reference ID to a tag node
+           * @returns {Array} Array of tag names from root to current
+           */
           const mapParentTags = (ref) => {
             var tags = []
             const tagNode = context.nodeModel.getNodeById({id: ref })
@@ -118,12 +140,12 @@ exports.createResolvers = ({createResolvers}) => {
             return tags
           }
           
-          // For all tags find parent tags
           const ref = source.tags[0]._ref
           var tags = []
           for (const tag of source.tags) {
             var tagsPerSource = []
             const parentTags = mapParentTags(tag._ref)
+            
             for (let i = parentTags.length - 1; i >=0; i--) {
               if(i == parentTags.length - 1) {
                 tagsPerSource.push(parentTags[i])
@@ -151,6 +173,11 @@ exports.createResolvers = ({createResolvers}) => {
   })
 }
 
+/**
+ * Gatsby Node API: onPostBuild
+ * Called after the build is complete. Synchronizes Algolia search settings
+ * and replica indices to ensure search functionality is properly configured.
+ */
 exports.onPostBuild = async function() {
   await syncAlgoliaSettings()
 }

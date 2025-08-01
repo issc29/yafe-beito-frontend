@@ -5,6 +5,34 @@ import { MdForward10 } from "@react-icons/all-files/md/MdForward10";
 import { MdReplay10 } from "@react-icons/all-files/md/MdReplay10";
 import { isMobile } from 'react-device-detect';
 
+/**
+ * AudioPlayerCustom Component
+ * 
+ * Custom audio player component that provides enhanced functionality for playing
+ * audio classes with time tracking, session persistence, and mobile optimization.
+ * 
+ * Features:
+ * - Fixed bottom position for persistent playback during navigation
+ * - Time tracking with callback for session persistence via cookies
+ * - Resume playback from specific timestamps via linkWithTime
+ * - Custom 10-second forward/backward jump controls
+ * - Mobile-responsive layout (hides volume controls on mobile)
+ * - Auto-play trigger via props.play state
+ * - Track metadata display (title, artist)
+ * 
+ * @param {Object} props - Component props
+ * @param {Object} props.Track - Audio track object containing metadata and URLs
+ * @param {string} props.Track.id - Unique identifier for the track
+ * @param {string} props.Track.title - Display title of the audio class
+ * @param {string} props.Track.artist - Artist/speaker name (typically Hakham Dr. José Faur)
+ * @param {string} props.Track.link - Base audio file URL
+ * @param {string} [props.Track.linkWithTime] - Audio URL with timestamp parameter for resuming playback
+ * @param {boolean} props.play - Trigger to start playback when track changes
+ * @param {Function} props.setPlay - Callback to reset play trigger state
+ * @param {Function} props.setAudioTime - Callback to track current playback time for persistence
+ * 
+ * @returns {JSX.Element} The custom audio player component
+ */
 const AudioPlayerCustom = (props) => {
   const player = React.useRef()
   const trackId = props.Track.id || ""
